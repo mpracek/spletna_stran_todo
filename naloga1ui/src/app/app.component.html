@@ -4,24 +4,25 @@
 
 <!-- za ikone-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--za določanje teme href zamenjamo z primerno temo iz npr bootswatch-->
+<link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.min.css">
 <!-- za vpeljavo bootstrap-->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <!--za temo, še ne dela prav-->
 <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
 
 <!--
   TODO:
-  -velikost gumbov
-  -postavljenost seznama
-  -tema odzadaj (bootstrap)
-  -izgled besedila
-  -animacije gumbov
-  -širina stolpcev
-  -style uvozi  v style.css
-  -uredi gumbe v moodal
-
-  Najprej uredi vnosno polje.
   Nato uredim seznam.
+
+  -velikost gumbov (shrani, uredi, izbriši)
+  -animacije gumbov
+  -uredi gumbe v moodal
+  -poglej zakaj gumb izbriši ne dela 100%
+
 
 -->
 
@@ -43,10 +44,11 @@
     </h4>
   </div>
   <div class="col-4">
+    <!-- urediti moram ta label-->
     <label>Naloga:
       <!--gumb za shranjevane postavke-->
      <input [(ngModel)]="userInput" placeholder=""/>
-      <button type="button" class="btn btn-primary" (click)=createNote()>Shrani</button>
+      <button type="button" class="btn btn-default" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
     </label>
   </div>
   <div class="col-1"></div>
@@ -66,7 +68,7 @@
         style="height: 1cm; width: 16cm;">
         <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
         <!--Gumb za urejanje-->
-      <button type="button" class="btn btn-primary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
+      <button type="button" class="btn btn-default" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2>Uredi postavko</h2>
@@ -78,17 +80,17 @@
                 </div>
             <p>Ali res želite spremeniti?</p>
             <!--Gumba za potrditev/preklic-->
-            <button type="button" class="btn btn-default" (click)="updateNote(selectedNote)">Potrdi spremembo</button>
+            <button type="button" class="btn btn-primary" (click)="updateNote(selectedNote)">Potrdi spremembo</button>
             <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
           </div>
           </ng-template>
          <!--Gumb za izbris-->
-          <button type="button" class="btn btn-primary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
+          <button type="button" class="btn btn-default" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
                 <!--Gumba za potrditev/preklic-->
-                <button type="button" class="btn btn-default" (click)="deleteNote(selectedNote)" >Potrdi izbris</button>
+                <button type="button" class="btn btn-primary" (click)="deleteNote(selectedNote)" >Potrdi izbris</button>
                 <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
               </div>
           </ng-template>
