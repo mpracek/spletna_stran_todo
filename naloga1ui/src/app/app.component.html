@@ -27,9 +27,9 @@
 
 <!--Naslov strani-->
 <div class="container">
-  <div class="jumbotron" style="height: 5cm;">
+  <div class="jumbotron" style="height: 5cm;text-align: center;">
     <h1>Zdravo!</h1>
-    <h2>Pa poglejmo, kaj moraš še narediti!</h2>
+    <h2>Pa poglejmo, kaj moraš še storiti!</h2>
   </div>
 </div >
 
@@ -52,7 +52,13 @@
   <div class="col-1"></div>
 </div>
 </div>
+
 <!--seznam postavk-->
+<div class="row">
+<div class="col">
+</div>
+
+<div class="col">
 <div class="container">
   <ul class="notes">
     <li *ngFor="let note of notes"
@@ -75,9 +81,9 @@
             <button type="button" class="btn btn-default" (click)="updateNote(selectedNote)">Potrdi spremembo</button>
             <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
           </div>
-         </ng-template>
+          </ng-template>
          <!--Gumb za izbris-->
-        <button type="button" class="btn btn-primary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
+          <button type="button" class="btn btn-primary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
@@ -88,6 +94,11 @@
           </ng-template>
        </li>
   </ul>
+</div>
+</div>
+
+<div class="col">
+</div>
 </div>
 
 
