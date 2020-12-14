@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- za vpeljavo bootstrap-->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<!--za temo, še ne dela prav-->
+<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
 
 <!--
   TODO:
@@ -33,20 +35,29 @@
 
 <!--Dodajanje postavke-->
 <div>
-  <h3>
-        S klikom na gumb Dodaj postavko dodamo nalogo.
+<div class="row">
+  <div class="col">
+    <h3>
+      S klikom na gumb Dodaj postavko dodamo nalogo.
     </h3>
-  <label>Besedilo:
-    <input [(ngModel)]="userInput" placeholder="Postavka"/>
-    <button type="button" (click)=createNote()>Shrani</button>
-  </label>
+  </div>
+  <div class="col">
+    <label>Naloga:
+     <input [(ngModel)]="userInput" placeholder="Postavka"/>
+      <button type="button" (click)=createNote()>Shrani</button>
+    </label>
+  </div>
+</div>
 </div>
 <!--seznam postavk-->
-<div>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
   <ul class="notes">
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 1cm;">
+        style="height: 1cm; width: 15cm;">
         {{note.note}} - {{note.creation}}
         <!--Gumb za urejanje-->
       <button type="button" class="btn btn-primary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
@@ -77,6 +88,9 @@
           </ng-template>
     </li>
   </ul>
+  </div>
+  <div class="col"></div>
+  </div>
 </div>
 
 
