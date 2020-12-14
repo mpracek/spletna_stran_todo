@@ -7,7 +7,7 @@
 <!-- za vpeljavo bootstrap-->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 <!--za temo, še ne dela prav-->
-<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+<link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
 
 <!--
   TODO:
@@ -27,7 +27,7 @@
 
 <!--Naslov strani-->
 <div class="container">
-  <div class="jumbotron">
+  <div class="jumbotron" style="height: 5cm;">
     <h1>Zdravo!</h1>
     <h2>Pa poglejmo, kaj moraš še narediti!</h2>
   </div>
@@ -36,17 +36,19 @@
 <!--Dodajanje postavke-->
 <div>
 <div class="row">
-  <div class="col">
-    <h3>
-      S klikom na gumb Dodaj postavko dodamo nalogo.
-    </h3>
+  <div class="col"></div>
+  <div class="col-5">
+    <h4>
+      S klikom na gumb <b>Shrani</b> dodamo nalogo.
+    </h4>
   </div>
-  <div class="col">
+  <div class="col-4">
     <label>Naloga:
-     <input [(ngModel)]="userInput" placeholder="Postavka"/>
+     <input [(ngModel)]="userInput" placeholder=""/>
       <button type="button" (click)=createNote()>Shrani</button>
     </label>
   </div>
+  <div class="col-1"></div>
 </div>
 </div>
 <!--seznam postavk-->
@@ -57,7 +59,7 @@
   <ul class="notes">
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 1cm; width: 15cm;">
+        style="height: 1cm">
         {{note.note}} - {{note.creation}}
         <!--Gumb za urejanje-->
       <button type="button" class="btn btn-primary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
