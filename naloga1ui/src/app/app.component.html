@@ -44,8 +44,9 @@
   </div>
   <div class="col-4">
     <label>Naloga:
+      <!--gumb za shranjevane postavke-->
      <input [(ngModel)]="userInput" placeholder=""/>
-      <button type="button" (click)=createNote()>Shrani</button>
+      <button type="button" class="btn btn-primary" (click)=createNote()>Shrani</button>
     </label>
   </div>
   <div class="col-1"></div>
@@ -53,14 +54,11 @@
 </div>
 <!--seznam postavk-->
 <div class="container">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col">
   <ul class="notes">
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 1cm">
-        {{note.note}} - {{note.creation}}
+        style="height: 1cm; width: 16cm;">
+        <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
         <!--Gumb za urejanje-->
       <button type="button" class="btn btn-primary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
           <ng-template #urejanje>
@@ -88,11 +86,8 @@
                 <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
               </div>
           </ng-template>
-    </li>
+       </li>
   </ul>
-  </div>
-  <div class="col"></div>
-  </div>
 </div>
 
 

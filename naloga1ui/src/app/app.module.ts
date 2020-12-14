@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SortableModule } from 'ngx-bootstrap/sortable';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ModalModule.forRoot(),
+    SortableModule.forRoot(),
     BrowserAnimationsModule
      ],
   providers: [],
