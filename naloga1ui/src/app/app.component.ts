@@ -1,15 +1,18 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Notes } from '../note';
 import { AppConfigService } from './services/appconfig.services';
 import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, HostBinding } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: []
 })
 
 export class AppComponent implements OnInit {
