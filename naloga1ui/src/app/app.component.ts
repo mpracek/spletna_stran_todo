@@ -5,7 +5,6 @@ import { AppConfigService } from './services/appconfig.services';
 import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Component, HostBinding } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
