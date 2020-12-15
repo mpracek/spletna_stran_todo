@@ -31,81 +31,80 @@
     <h1>Zdravo!</h1>
     <h2>Pa poglejmo, kaj moraš še storiti!</h2>
   </div>
-</div >
+</div>
 
 <!--Dodajanje postavke-->
-<div>
-<div class="row">
-  <div class="col"></div>
-  <div class="col-5">
-    <h4>
-      S klikom na gumb <b>Shrani</b> dodamo nalogo.
-    </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <h4>
+        S klikom na gumb <b>Shrani</b> dodamo nalogo.
+      </h4>
+    </div>
+    <div class="col-5">
+      <!-- urediti moram ta label, da bo izgledal lep-->
+      <label>Naloga:
+        <!--gumb za shranjevane postavke-->
+        <input [(ngModel)]="userInput" placeholder="" />
+        <button type="button" class="btn btn-default" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
+      </label>
+    </div>
+    <!-- <div class="col-1"></div> -->
   </div>
-  <div class="col-4">
-    <!-- urediti moram ta label, da bo izgledal lep-->
-    <label>Naloga:
-      <!--gumb za shranjevane postavke-->
-     <input [(ngModel)]="userInput" placeholder=""/>
-      <button type="button" class="btn btn-default" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
-    </label>
-  </div>
-  <div class="col-1"></div>
-</div>
 </div>
 
 <!--seznam postavk-->
-<div class="row">
-<div class="col">
-</div>
+<!-- <div class="container"> -->
+<!-- <div class="row"> -->
+<!-- <div class="col">
+    </div> -->
 
-<div class="col">
+<!-- <div class="col"> -->
 <div class="container">
   <ul class="notes">
     <li *ngFor="let note of notes"
-        [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 1cm; width: 16cm;">
-        <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
+      [class.selected]="note === selectedNote" (click)="onSelect(note)">
+      <!-- style="height: 1cm; width: 16cm;"> -->
+      <div class="row">
+        <div class="col-6">{{note.note}}</div><div class="col-2">{{note.creation}}</div>
         <!--Gumb za urejanje-->
-      <button type="button" class="btn btn-default" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
-          <ng-template #urejanje>
-            <div class="modal-body text-center">
+        <div class="col-2">
+          <button type="button" class="btn btn-default" (click)="openModal(urejanje)"><i class="fa fa-edit"> Uredi</i></button>
+        </div>
+        <ng-template #urejanje>
+          <div class="modal-body text-center">
             <h2>Uredi postavko</h2>
-                <div><span>Datum nastanka postavke:  </span>{{selectedNote.creation}}</div>
-                <div>
-                  <label>Ime postavke:
-                    <input [(ngModel)]="selectedNote.note" placeholder="note"/>
-                  </label>
-                </div>
+            <div><span>Datum nastanka postavke: </span>{{selectedNote.creation}}</div>
+            <div>
+              <label>Ime postavke:
+                <input [(ngModel)]="selectedNote.note" placeholder="note" />
+              </label>
+            </div>
             <p>Ali res želite spremeniti?</p>
             <!--Gumba za potrditev/preklic-->
             <button type="button" class="btn btn-primary" (click)="updateNote(selectedNote)">Potrdi spremembo</button>
-            <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
+            <button type="button" class="btn btn-primary" (click)="decline()">Prekliči</button>
           </div>
-          </ng-template>
-         <!--Gumb za izbris-->
+        </ng-template>
+        <!--Gumb za izbris-->
+        <div class="col-2">
           <button type="button" class="btn btn-default" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
-          <ng-template #brisanje>
-              <div class="modal-body text-center">
-                <p>Ali res želite izbrisati?</p>
-                <!--Gumba za potrditev/preklic-->
-                <button type="button" class="btn btn-primary" (click)="deleteNote(selectedNote)" >Potrdi izbris</button>
-                <button type="button" class="btn btn-primary" (click)="decline()" >Prekliči</button>
-              </div>
-          </ng-template>
-       </li>
+        </div>
+        <ng-template #brisanje>
+          <div class="modal-body text-center">
+            <p>Ali res želite izbrisati?</p>
+            <!--Gumba za potrditev/preklic-->
+            <button type="button" class="btn btn-primary" (click)="deleteNote(selectedNote)">Potrdi izbris</button>
+            <button type="button" class="btn btn-primary" (click)="decline()">Prekliči</button>
+          </div>
+        </ng-template>
+      </div>
+    </li>
   </ul>
 </div>
-</div>
+<!-- </div> -->
 
-<div class="col">
-</div>
-</div>
-
-
-
-
-
-
-
-
+<!-- <div class="col">
+    </div> -->
+<!-- </div> -->
+<!-- </div> -->

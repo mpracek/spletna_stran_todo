@@ -39,9 +39,9 @@ body, input[type="text"], button {
 }
 
 li {
-  column-count: 4;
+  /* column-count: 4;
   column-width: 5cm;
-  display: flex;
+  display: flex; */
 }
 
 .li li:nth-child(1){width: 5cm;}
