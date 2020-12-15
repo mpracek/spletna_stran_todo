@@ -49,40 +49,40 @@
 
 <!--seznam postavk-->
 <div class="row">
-<div class="col">
+<div class="col-3">
 </div>
 
-<div class="col-5">
+<div class="col-6">
 <div class="container">
   <ul class="notes">
-    <li style="height: 4rem; width: 35rem;color:rgb(104, 102, 102);">
+    <li style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">
       <div class="col-4">
         Naloga
       </div>
-      <div class="col-2">
+      <div class="col-4">
         Datum nastanka
       </div>
-      <div class="col-3"style="justify-content: right;">
+      <div class="col-2">
         Uredi
       </div>
-      <div class="col-3" style="justify-content: right;">
+      <div class="col-2">
         Izbriši
       </div>
     </li>
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 3rem; width: 35rem;color:rgb(104, 102, 102);">
-        <div class="col-4">{{note.note}}</div><div class="col-2">{{note.creation}}</div>
+        style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">
+        <div class="col-4">{{note.note}}</div><div class="col-3">{{note.creation}}</div>
         <!--Gumb za urejanje-->
-      <div class="col-3" style="justify-content: right;">
+          <div class="col-2">
       <button type="button" class="btn btn-secondary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
-            <h2 style="color: whitesmoke;">Uredi postavko</h2>
+            <h2 style="color: whitesmoke;">Uredi nalogo</h2>
                 <div><span>Datum nastanka:  </span>{{selectedNote.creation}}</div>
                 <div>
-                  <label>Naloga:
-                    <input [(ngModel)]="selectedNote.note" placeholder="note"/>
+                  <label>
+                    <input [(ngModel)]="selectedNote.note" placeholder="note" />
                   </label>
                 </div>
             <p>Ali res želite spremeniti?</p>
@@ -97,10 +97,9 @@
             </div>
           </div>
           </ng-template>
-      </div>
-         <!--Gumb za izbris-->
-         <!--Odločit se moram kakšen bo izgled gumbov, popravit padding-->
-        <div class="col-3" style="justify-content: flex-end;">
+          </div>
+        <!--Gumb za izbris-->
+          <div class="col-2">
         <button type="button" class="btn btn-secondary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
@@ -118,12 +117,12 @@
                 </div>
               </div>
           </ng-template>
-        </div>
+          </div>
        </li>
   </ul>
 </div>
 </div>
 
-<div class="col">
+<div class="col-3">
 </div>
 </div>

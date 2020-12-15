@@ -38,6 +38,8 @@ body, input[type="text"], button {
   font-size: 30px;
 }
 
+
+
 li {
   column-count: 4;
   column-width: 5cm;
@@ -46,16 +48,40 @@ li {
   justify-content: space-around;
 }
 
-.li li:nth-child(1){width: 5cm;}
-.li li:nth-child(2){width: 5cm;}
-.li li:nth-child(3){width: 3cm;}
-.li li:nth-child(4){width: 3cm;}
-
 .btn-secondary {
   background:rgb(104, 102, 102);
 }
 
-.col-3 div {
+/*
+Slogi za uporabljene stolpce
+*/
+
+.col {
+  align-items: center;
+  justify-content: center;
+}
+
+.col-2 {
+  align-items: center;
+  justify-content: right;
+}
+
+.col-3 {
+  align-items: center;
+  justify-content: center;
+}
+
+.col-4 {
+  align-items: center;
+  justify-content: right;
+}
+
+.col-5 {
+  align-items: center;
+  justify-content: right;
+}
+
+.col-6 {
   align-items: center;
   justify-content: right;
 }
