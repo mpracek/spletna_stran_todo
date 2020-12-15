@@ -42,24 +42,14 @@ li {
   column-count: 4;
   column-width: 5cm;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .li li:nth-child(1){width: 5cm;}
 .li li:nth-child(2){width: 5cm;}
 .li li:nth-child(3){width: 3cm;}
 .li li:nth-child(4){width: 3cm;}
-
-div.text-center {
-  text-align: center;
-}
-
-div.text-left {
-  text-align: left;
-}
-
-div.text-right {
-  text-align: right;
-}
 
 .btn-group .button {
   background-color: #4CAF50; /* Green */
