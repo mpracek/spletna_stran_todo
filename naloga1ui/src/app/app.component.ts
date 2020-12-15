@@ -11,7 +11,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: []
+  animations:[]
 })
 
 export class AppComponent implements OnInit {

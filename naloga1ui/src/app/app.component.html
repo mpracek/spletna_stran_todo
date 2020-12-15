@@ -14,11 +14,9 @@
 <!--
   TODO:
   Nato uredim seznam.
-  -velikost gumbov (shrani, uredi, izbriši)
   -animacije gumbov
-  -uredi gumbe v moodal
-  -poglej zakaj gumb izbriši ne dela 100%
-  -ureditev vrstice seznama
+  -uredi postavitev gumbov uredi in izbriši
+  -premakni gumb shrani bolj v desno
 -->
 
 <!--Naslov strani-->
@@ -39,10 +37,9 @@
     </h4>
   </div>
   <div class="col-4">
-    <!-- urediti moram ta label, da bo izgledal lep-->
-    <label>Naloga:
+    <label>Nova naloga:
       <!--gumb za shranjevane postavke-->
-     <input [(ngModel)]="userInput" placeholder=""/>
+     <input [(ngModel)]="userInput" placeholder=""/> &nbsp;
       <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
     </label>
   </div>
@@ -58,11 +55,26 @@
 <div class="col-5">
 <div class="container">
   <ul class="notes">
+    <li style="height: 4rem; width: 35rem;color:rgb(104, 102, 102);">
+      <div class="col-4">
+        Naloga
+      </div>
+      <div class="col-2">
+        Datum nastanka
+      </div>
+      <div class="col-3"style="justify-content: right;">
+        Uredi
+      </div>
+      <div class="col-3" style="justify-content: right;">
+        Izbriši
+      </div>
+    </li>
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 3rem; width: 40rem;">
-        <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
+        style="height: 3rem; width: 35rem;color:rgb(104, 102, 102);">
+        <div class="col-4">{{note.note}}</div><div class="col-2">{{note.creation}}</div>
         <!--Gumb za urejanje-->
+      <div class="col-3" style="justify-content: right;">
       <button type="button" class="btn btn-secondary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
@@ -77,7 +89,7 @@
             <!--Gumba za potrditev/preklic-->
             <div class="row">
               <div class="col">
-              <button type="button" class="btn btn-secondary" (click)="updateNote(selectedNote)">Potrdi spremembo</button>
+              <button type="button" class="btn btn-secondary" (click)="updateNote(selectedNote)">Potrdi</button>
               </div>
               <div class="col">
               <button type="button" class="btn btn-secondary" (click)="decline()" >Prekliči</button>
@@ -85,8 +97,10 @@
             </div>
           </div>
           </ng-template>
+      </div>
          <!--Gumb za izbris-->
          <!--Odločit se moram kakšen bo izgled gumbov, popravit padding-->
+        <div class="col-3" style="justify-content: flex-end;">
         <button type="button" class="btn btn-secondary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
@@ -95,7 +109,7 @@
                 <div class="row">
                   <div class="col-1"></div>
                   <div class="col-5">
-                  <button type="button" class="btn btn-secondary" (click)="deleteNote(selectedNote)" >Potrdi izbris</button>
+                  <button type="button" class="btn btn-secondary" (click)="deleteNote(selectedNote)" >Potrdi</button>
                   </div>
                   <div class="col-5">
                   <button type="button" class="btn btn-secondary" (click)="decline()" >Prekliči</button>
@@ -104,6 +118,7 @@
                 </div>
               </div>
           </ng-template>
+        </div>
        </li>
   </ul>
 </div>

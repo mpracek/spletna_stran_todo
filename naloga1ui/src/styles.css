@@ -51,6 +51,15 @@ li {
 .li li:nth-child(3){width: 3cm;}
 .li li:nth-child(4){width: 3cm;}
 
+.btn-secondary {
+  background:rgb(104, 102, 102);
+}
+
+.col-3 div {
+  align-items: center;
+  justify-content: right;
+}
+
 .btn-group .button {
   background-color: #4CAF50; /* Green */
   border: 1px solid green;
