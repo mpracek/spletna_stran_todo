@@ -75,7 +75,7 @@
         <div class="col-4">{{note.note}}</div><div class="col-3">{{note.creation}}</div>
         <!--Gumb za urejanje-->
           <div class="col-2">
-      <button type="button" class="btn btn-secondary" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
+      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2 style="color: whitesmoke;">Uredi nalogo</h2>
@@ -89,10 +89,10 @@
             <!--Gumba za potrditev/preklic-->
             <div class="row">
               <div class="col">
-              <button type="button" class="btn btn-secondary" (click)="updateNote(selectedNote)">Potrdi</button>
+              <button type="button" class="btn btn-secondary btn-block" (click)="updateNote(selectedNote)">Potrdi</button>
               </div>
               <div class="col">
-              <button type="button" class="btn btn-secondary" (click)="decline()" >Prekliči</button>
+              <button type="button" class="btn btn-secondary btn-block" (click)="decline()" >Prekliči</button>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
           </div>
         <!--Gumb za izbris-->
           <div class="col-2">
-        <button type="button" class="btn btn-secondary" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
@@ -108,10 +108,10 @@
                 <div class="row">
                   <div class="col-1"></div>
                   <div class="col-5">
-                  <button type="button" class="btn btn-secondary" (click)="deleteNote(selectedNote)" >Potrdi</button>
+                  <button type="button" class="btn btn-secondary btn-block" (click)="deleteNote(selectedNote)" >Potrdi</button>
                   </div>
                   <div class="col-5">
-                  <button type="button" class="btn btn-secondary" (click)="decline()" >Prekliči</button>
+                  <button type="button" class="btn btn-secondary btn-block" (click)="decline()" >Prekliči</button>
                   </div>
                   <div class="col-1"></div>
                 </div>
