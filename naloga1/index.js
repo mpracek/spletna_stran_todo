@@ -180,3 +180,22 @@ app.post("/api/note/delete", (req, res, next) => {
 app.use(function (req, res) {
     res.status(404);
 });
+/*
+
+Mogoče za graf
+
+app.get("/api/note/list", (req, res, next) => {
+  var sql = "COUNT * FROM notes WHERE creation is ?"
+  var params = [values.creation]
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+          res.status(400).json({ "error": err.message });
+          return;
+      }
+      res.json({
+          "message": "postavke izpisane",
+          "data": rows
+      })
+  });
+});
+*/

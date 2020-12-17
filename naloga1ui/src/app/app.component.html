@@ -11,14 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<!--
-  TODO:
-  Nato uredim seznam.
-  -animacije gumbov
-  -uredi postavitev gumbov uredi in izbriši
-  -premakni gumb shrani bolj v desno
--->
-
 <!--Naslov strani-->
 <div class="container">
   <div class="jumbotron" style="height: 10rem;text-align: center;">
@@ -119,7 +111,7 @@
           </div>
         <!--Gumb za izbris-->
           <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close"> Izbriši</i></button>
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;&nbsp;Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
