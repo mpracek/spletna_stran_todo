@@ -27,9 +27,9 @@
 </div>
 <div class="main">
 <div class="container">
-  <div class="jumbotron" style="height: 10rem;text-align: center;">
+  <div class="jumbotron" style="height:10rem; text-align: center;">
     <h1>Zdravo!</h1>
-    <h3 style="color: whitesmoke; padding-bottom: 10px;">Pa poglejmo, kaj moraš še storiti!</h3>
+    <h3 style="color: whitesmoke; padding-bottom: 10px;"> Pa poglejmo, kaj moraš še storiti!</h3>
   </div>
 </div >
 </div>
@@ -50,13 +50,13 @@
   <div class="collapse" id="collapseExample">
       <div class="row">
         <div class="col">
-         <input [(ngModel)]="userInput" placeholder="Naloga"/>
+         <input [(ngModel)]="userInput" placeholder="Naloga, ki jo dodajaš" type="text"  class="form-control" style="padding-bottom: 2px;"/>
         </div>
         <div class="col">
-          <input [(ngModel)]="userInput1" placeholder="Datum"/>
+          <input [(ngModel)]="userInput1" placeholder="Datum dodajanja" type="date"  class="form-control" style="padding-bottom: 2px;"/>
         </div>
         <div class="col">
-          <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
+          <button type="button" class="btn btn-secondary" (click)=createNote() style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
         </div>
     </div>
   </div>
@@ -69,7 +69,7 @@
 <div class="row">
 
 <div class="left">
-<div class="col">
+  <div class="col">
       <div id="carouselExample" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -114,14 +114,14 @@
         <div class="col-4">{{note.note}}</div><div class="col-3">{{note.creation}}</div>
         <!--Gumb za urejanje-->
           <div class="col-2">
-      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit"> Uredi</i></button>
+      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit">&nbsp;Uredi</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2 style="color: whitesmoke;">Uredi nalogo</h2>
-                <div><span>Datum nastanka:  </span>{{selectedNote.creation}}</div>
+                <div style="padding-bottom: .5em;text-align: center;"><span>Datum nastanka:  </span>{{selectedNote.creation}}</div>
                 <div>
                   <label>
-                    <input [(ngModel)]="selectedNote.note" placeholder="note" />
+                    <input [(ngModel)]="selectedNote.note" placeholder="note" class="form-control"/>
                   </label>
                 </div>
             <p>Ali res želite spremeniti?</p>
@@ -139,7 +139,7 @@
           </div>
         <!--Gumb za izbris-->
           <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">Izbriši</i></button>
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
@@ -161,6 +161,7 @@
   </ul>
 </div>
 </div>
+
 
 <div class="right">
 <div class="col">
@@ -186,7 +187,6 @@
 
 
 
-</div>
 </div>
 
 </div>

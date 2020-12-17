@@ -7,21 +7,23 @@ import { SortableModule } from 'ngx-bootstrap/sortable';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
+    AboutComponent
   ],
+
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ModalModule.forRoot(),
     SortableModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
      ],
   providers: [],
   bootstrap: [AppComponent]
