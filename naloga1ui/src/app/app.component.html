@@ -2,6 +2,8 @@
 
 <!--Funckije in spremenljivke (npr, userInput, createNote()), ki jih v xyz.html uporabljaš so vedno definirane v xyz.ts.-->
 
+<!-- za potrebe razširitve in skrčitve zaslona -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- za ikone-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--za določanje teme href zamenjamo z primerno temo iz npr bootswatch-->
@@ -11,44 +13,91 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<!--TODO:
+  -zdej bomo izpolnili tudi datum
+  -formControl -> izploniti je treba datum in nalogo. Le če sta oba izpolnjena dodamo.
+  -uredi kvadratke (za input)
+  -uredi, da ko se skrči okno, da izgleda lepo
+  -TSOA na backend
+    -->
+
 <!--Naslov strani-->
+<div class="row">
+<div class="left">
+</div>
+<div class="main">
 <div class="container">
   <div class="jumbotron" style="height: 10rem;text-align: center;">
     <h1>Zdravo!</h1>
     <h3 style="color: whitesmoke;">Pa poglejmo, kaj moraš še storiti!</h3>
   </div>
 </div >
+</div>
+<div class="right">
+</div>
+</div>
 
 <!--Dodajanje postavke-->
-<div>
 <div class="row">
-  <div class="col"></div>
-  <div class="col-5">
+<div class="left">
+</div>
+<div class="col">
+  <p>
+    <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      S klikom na gumb <b>Shrani</b> dodamo nalogo.
+    </a>
+    </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div class="row">
+        <div class="col">
+          <input [(ngModel)]="userInput" placeholder="Naloga"/>
+        </div>
+        <div class="col">
+          <input [(ngModel)]="userInput1" placeholder="Datum"/>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--<div class="row">
+
+    <label>Datum vnosa:->>
+      <!--gumb za shranjevane postavke-->
+      <!--<input [(ngModel)]="userInput1" placeholder=""/> &nbsp;
+    </label>-->
+    <!--
     <h4>
       S klikom na gumb <b>Shrani</b> dodamo nalogo.
     </h4>
-  </div>
-  <div class="col-4">
-    <label>Nova naloga:
-      <!--gumb za shranjevane postavke-->
-     <input [(ngModel)]="userInput" placeholder=""/> &nbsp;
-      <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
-    </label>
-  </div>
-  <div class="col-1"></div>
+    -->
+    <!--</div>
+    <div class="col">
+      <label>Nova naloga:-->
+        <!--gumb za shranjevane postavke-->
+        <!--<input [(ngModel)]="userInput" placeholder=""/> &nbsp;
+        <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
+      </label>
+    </div>
+    </div>-->
+</div>
+<div class="right">
 </div>
 </div>
 
 <!--seznam postavk-->
 <div class="row">
-<div class="col-3">
+<div class="left">
+<div class="col">
       <div id="carouselExample" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://www.hofer.si/fileadmin/fm-dam/O_HOFERju/Hofer_Scena/2020-06-HOFER-CENA-hofer-si-Landing_banner_01.jpg" class="d-block w-100" style="width: 25rem;">
+            <img src="https://www.hofer.si/fileadmin/fm-dam/O_HOFERju/Hofer_Scena/2020-06-HOFER-CENA-hofer-si-Landing_banner_01.jpg" class="d-block w-100">
           </div>
           <div class="carousel-item">
-            <img src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2018/12/Santa-Hero_1920x1080.jpg" class="d-block w-100" alt="..." style="width: 25rem;">
+            <img src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2018/12/Santa-Hero_1920x1080.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
@@ -60,9 +109,10 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-
+    </div>
 </div>
 
+<div class="main">
 <div class="col-6">
 <div class="container">
   <ul class="notes">
@@ -133,8 +183,10 @@
   </ul>
 </div>
 </div>
+</div>
 
-<div class="col-3">
+<div class="right">
+<div class="col">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -152,6 +204,11 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+
+
+
+
 </div>
 </div>
 </div>

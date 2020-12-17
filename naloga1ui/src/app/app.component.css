@@ -36,7 +36,43 @@
 
 img {
   float: left;
-  width:  25rem;
   height: 10rem;
   object-fit: cover;
+  width: 25rem;
+}
+
+/* spremembe zaslona */
+* {
+  box-sizing:border-box;
+}
+
+.left {
+  padding-left:10px;
+  float:left;
+  width: 20%;
+  text-align: center;
+}
+
+.main {
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  padding-right:10px;
+  float:left;
+  width: 20%;
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+  .left, .main, .right {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
+
+.collapse {
+  padding: 5px;
 }

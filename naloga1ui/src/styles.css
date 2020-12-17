@@ -59,6 +59,7 @@ Slogi za uporabljene stolpce
 .col {
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .col-2 {

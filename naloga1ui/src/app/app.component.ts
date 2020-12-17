@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   notes = [];
 
   userInput = null;
+  userInput1 = null;
 
   ngOnInit() {
 
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
 
   createNote() {
     console.log({note: this.userInput})
-    this.configService.createNote({note: this.userInput});
+    this.configService.createNote({note: this.userInput,creation: this.userInput1});
     this.userInput = null;
     this.getAllNotes();
   }

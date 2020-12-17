@@ -100,15 +100,19 @@ app.get("/api/note/:id", (req, res, next) => {
 //dodamo postavko, id je avtomatičen
 app.post("/api/note/", (req, res, next) => {
   //urška
+    /*
+    today smo odstranili, ker bomo sedaj datum dodajali posebej
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = yyyy + '-' + mm + '-' + dd;
+    */
     console.log("HERE1", req.body)
     let values = {
         //zaenkrat privzamemo, da je datum naloge trenutni datum, torej ko se je nalogo zamislilo se je začela -> tisto minuto
-        creation: today,
+        creation: req.body.params.creation,
         note: req.body.params.note
     };
     console.log(values);
@@ -180,22 +184,3 @@ app.post("/api/note/delete", (req, res, next) => {
 app.use(function (req, res) {
     res.status(404);
 });
-/*
-
-Mogoče za graf
-
-app.get("/api/note/list", (req, res, next) => {
-  var sql = "COUNT * FROM notes WHERE creation is ?"
-  var params = [values.creation]
-  db.all(sql, params, (err, rows) => {
-      if (err) {
-          res.status(400).json({ "error": err.message });
-          return;
-      }
-      res.json({
-          "message": "postavke izpisane",
-          "data": rows
-      })
-  });
-});
-*/
