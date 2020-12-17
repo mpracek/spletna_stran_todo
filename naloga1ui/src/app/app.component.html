@@ -29,7 +29,7 @@
 <div class="container">
   <div class="jumbotron" style="height: 10rem;text-align: center;">
     <h1>Zdravo!</h1>
-    <h3 style="color: whitesmoke;">Pa poglejmo, kaj moraš še storiti!</h3>
+    <h3 style="color: whitesmoke; padding-bottom: 10px;">Pa poglejmo, kaj moraš še storiti!</h3>
   </div>
 </div >
 </div>
@@ -44,14 +44,13 @@
 <div class="col">
   <p>
     <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      S klikom na gumb <b>Shrani</b> dodamo nalogo.
+      Klikni tu, če želiš dodati postavko.
     </a>
     </p>
   <div class="collapse" id="collapseExample">
-    <div class="card card-body">
       <div class="row">
         <div class="col">
-          <input [(ngModel)]="userInput" placeholder="Naloga"/>
+         <input [(ngModel)]="userInput" placeholder="Naloga"/>
         </div>
         <div class="col">
           <input [(ngModel)]="userInput1" placeholder="Datum"/>
@@ -59,29 +58,8 @@
         <div class="col">
           <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
         </div>
-      </div>
     </div>
   </div>
-<!--<div class="row">
-
-    <label>Datum vnosa:->>
-      <!--gumb za shranjevane postavke-->
-      <!--<input [(ngModel)]="userInput1" placeholder=""/> &nbsp;
-    </label>-->
-    <!--
-    <h4>
-      S klikom na gumb <b>Shrani</b> dodamo nalogo.
-    </h4>
-    -->
-    <!--</div>
-    <div class="col">
-      <label>Nova naloga:-->
-        <!--gumb za shranjevane postavke-->
-        <!--<input [(ngModel)]="userInput" placeholder=""/> &nbsp;
-        <button type="button" class="btn btn-secondary" (click)=createNote()><i class="fa fa-check"></i>Shrani</button>
-      </label>
-    </div>
-    </div>-->
 </div>
 <div class="right">
 </div>
@@ -89,6 +67,7 @@
 
 <!--seznam postavk-->
 <div class="row">
+
 <div class="left">
 <div class="col">
       <div id="carouselExample" class="carousel slide" data-ride="carousel">
@@ -112,9 +91,8 @@
     </div>
 </div>
 
-<div class="main">
-<div class="col-6">
 <div class="container">
+  <div class="main">
   <ul class="notes">
     <li style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">
       <div class="col-4">
@@ -183,7 +161,6 @@
   </ul>
 </div>
 </div>
-</div>
 
 <div class="right">
 <div class="col">
@@ -211,4 +188,5 @@
 
 </div>
 </div>
+
 </div>

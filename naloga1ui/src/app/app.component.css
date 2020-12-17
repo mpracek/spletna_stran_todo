@@ -61,7 +61,7 @@ img {
 
 .right {
   padding-right:10px;
-  float:left;
+  float:right;
   width: 20%;
 }
 
@@ -76,3 +76,19 @@ img {
 .collapse {
   padding: 5px;
 }
+
+/* pisave */
+
+.label{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-secondary {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.jumbotron {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
