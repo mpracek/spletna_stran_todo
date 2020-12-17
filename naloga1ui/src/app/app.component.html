@@ -71,13 +71,13 @@
         Naloga
       </div>
       <div class="col-4">
-        Datum nastanka
+        &nbsp;Datum nastanka
       </div>
       <div class="col-2">
         Uredi
       </div>
       <div class="col-2">
-        Izbriši
+        &nbsp;&nbsp;&nbsp;Izbriši
       </div>
     </li>
     <li *ngFor="let note of notes"
@@ -111,7 +111,7 @@
           </div>
         <!--Gumb za izbris-->
           <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;&nbsp;Izbriši</i></button>
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">Izbriši</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
