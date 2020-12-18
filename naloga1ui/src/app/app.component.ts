@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { trigger, state, style, animate, transition, query, stagger } from '@angular/animations';
+import { FormBuilder, FormGroup, FormArray, Validators  } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,12 @@ export class AppComponent implements OnInit {
   title = 'Zadolzitve';
   // notes = Notes;
   selectedNote: Notes;
+  dynamicForm: FormGroup;
 
   constructor(
     private configService: AppConfigService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private formBuilder: FormBuilder
   ) { }
 
   notes = [];
@@ -48,12 +51,19 @@ export class AppComponent implements OnInit {
     })
   }
 
+    /*
+    vir za dynamic form je jason watt moore https://jasonwatmore.com/post/2020/09/18/angular-10-dynamic-reactive-forms-example
+    s pomočjo tega vpelji potrebne funkcije
+    */
+
+
   createNote() {
-    console.log({note: this.userInput})
+
     this.configService.createNote({note: this.userInput,creation: this.userInput1});
     this.userInput = null;
     this.userInput1 = null;
     this.getAllNotes();
+    this.dynamicForm.reset();
   }
 
 
