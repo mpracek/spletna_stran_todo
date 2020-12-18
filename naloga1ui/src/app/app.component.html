@@ -14,11 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!--TODO:
-  -zdej bomo izpolnili tudi datum
   -formControl -> izploniti je treba datum in nalogo. Le če sta oba izpolnjena dodamo.
-  -uredi kvadratke (za input)
-  -uredi, da ko se skrči okno, da izgleda lepo
   -TSOA na backend
+  -collapse okno da bo vse lepo razvrščeno
     -->
 
 <!--Naslov strani-->
@@ -37,7 +35,7 @@
 </div>
 </div>
 
-<!--Dodajanje postavke-->
+<!--Dodajanje naloge-->
 <div class="row">
 <div class="left">
 </div>
@@ -91,30 +89,31 @@
     </div>
 </div>
 
-<div class="container">
+<div class="col">
   <div class="main">
   <ul class="notes">
-    <li style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">
+    <li style="height: 3rem;color:rgb(104, 102, 102);">
       <div class="col-4">
         Naloga
       </div>
       <div class="col-4">
-        &nbsp;Datum nastanka
+        Datum nastanka
       </div>
       <div class="col-2">
         Uredi
       </div>
       <div class="col-2">
-        &nbsp;&nbsp;&nbsp;Izbriši
+        Izbriši
       </div>
     </li>
     <li *ngFor="let note of notes"
         [class.selected]="note === selectedNote" (click)="onSelect(note)"
-        style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">
-        <div class="col-4">{{note.note}}</div><div class="col-3">{{note.creation}}</div>
+        style="height: 3rem; color:rgb(104, 102, 102);">
+        <!--style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">-->
+        <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
         <!--Gumb za urejanje-->
           <div class="col-2">
-      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit">&nbsp;Uredi</i></button>
+      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit">&nbsp;</i></button>
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2 style="color: whitesmoke;">Uredi nalogo</h2>
@@ -139,7 +138,7 @@
           </div>
         <!--Gumb za izbris-->
           <div class="col-2">
-        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;Izbriši</i></button>
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;</i></button>
           <ng-template #brisanje>
               <div class="modal-body text-center">
                 <p>Ali res želite izbrisati?</p>
@@ -162,7 +161,6 @@
 </div>
 </div>
 
-
 <div class="right">
 <div class="col">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -183,10 +181,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-
-
-
 </div>
 
 </div>

@@ -2,10 +2,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  /*
-  Tukaj uredimo, da bo velikost odzivna.
-  hočemo, da se vse skrči.
-  */
+  justify-content: center;
 }
 
 .notes li {
@@ -49,14 +46,14 @@ img {
 }
 
 .left {
-  padding-left:10px;
-  float:left;
+  padding:10px;
+  float:center;
   width: 20%;
   text-align: center;
 }
 
 .main {
-  width: 60%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -67,8 +64,9 @@ img {
   width: 20%;
 }
 
+
 /* Use a media query to add a break point at 800px: */
-@media screen and (max-width:800px) {
+@media screen and (max-width:1550px) {
   .left, .main, .right {
     width:100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
@@ -96,4 +94,41 @@ img {
 
 .form-control {
   background-color: whitesmoke;
+}
+/*
+Slogi za uporabljene stolpce
+*/
+
+.col {
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.col-2 {
+  align-items: center;
+  justify-content: right;
+  text-align: center;
+}
+
+.col-3 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.col-4 {
+  align-items: center;
+  justify-content: right;
+  text-align: left;
+}
+
+.col-5 {
+  align-items: center;
+  justify-content: right;
+}
+
+.col-6 {
+  align-items: center;
+  justify-content: right;
 }
