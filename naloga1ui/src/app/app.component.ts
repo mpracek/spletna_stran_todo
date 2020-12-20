@@ -56,9 +56,16 @@ export class AppComponent implements OnInit {
     vir za dynamic form je jason watt moore https://jasonwatmore.com/post/2020/09/18/angular-10-dynamic-reactive-forms-example
     s pomočjo tega vpelji potrebne funkcije
     */
-
+  get f() {return this.dynamicForm.controls; }
+  get t() {return this.f.note as FormArray; }
 
   createNote() {
+
+    this.t.push(this.formBuilder.group({
+        note: ['',Validators.required],
+        creation: ['',Validators.required]
+    }));
+
     this.configService.createNote({note: this.userInput,creation: this.userInput1});
     this.userInput = null;
     this.userInput1 = null;
