@@ -1,19 +1,17 @@
 // A post request should not contain an id.
-export type UserCreationParams = Pick<Note, "email" | "name" | "phoneNumbers">;
+export type UserCreationParams = [note,creation];
 
-export class UsersService {
-  public get(id: number, name?: string):  {
+export class NotesService {
+  public get(id: number, note: string, creation: date):  {
     return {
       id,
-      note: "jane@doe.com",
-      creation:
+      note,
+      creation
     };
   }
 
-  public create(userCreationParams: UserCreationParams): User {
+  public create(noteCreationParams: UserCreationParams): User {
     return {
-      id: Math.floor(Math.random() * 10000), // Random
-      status: "Happy",
       ...userCreationParams,
     };
   }
