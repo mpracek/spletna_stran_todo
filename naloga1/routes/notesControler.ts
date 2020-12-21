@@ -10,18 +10,19 @@ import {
   Route,
   SuccessResponse,
 } from "tsoa";
+
 import { NotesService, noteCreationParams } from "./notesService";
 
 @Route("note")
-export class NotessControler extends Controler {
-  @Get("{id}")
+export class NotesControler extends Controler {
+  @Get("/api/note/:id")
   public async getNote(
     @Path() Id: number,
      ): Promise<Note> {
     return new NotesService().get(Id);
   }
 
-  @Get()
+  @Get("/api/note/list")
   public async  getAllNote(
     @Path()
     ): Promise<Note>{
@@ -30,7 +31,7 @@ export class NotessControler extends Controler {
 
   @SuccessResponse("201", "Created") // Custom success response
 
-  @Post()
+  @Post("/api/note/")
   public async createNote(
     @Body() requestBody: UserCreationParams
   ): Promise<void> {
@@ -39,14 +40,14 @@ export class NotessControler extends Controler {
     return;
   }
 
-  @Post("id")
+  @Post("/api/note/delete")
   public async deleteNote(
     @Body() Id: number,
   ): Promise<Note>{
     new NotesService().delete(requestBody)
   }
 
-  @Post("id")
+  @Post("/api/note/update")
   public async updateNote(
     @Body() Id: number,
   ): Promise<Note>{

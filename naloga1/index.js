@@ -18,13 +18,6 @@ so vedno definirane v xyz.ts.
 TODO:
 -uporabi drugi tutorial, ki ga je urška poslala, da povežeš REST API in Angular -> nisem prepričan če deluje
 
--gumb dodaj postavko bo res dodal postavko
--uredi da se bo seznam prikazal
--križec in svinčnik naj bi bila že dodana (koda urška)
--uredi pop-upe
-
-
-
 
 ni vec TODO ampak so še vedno odprta vprašanja
 -ugotoviti izvor napake, ki se pojavi ko zaženem:
