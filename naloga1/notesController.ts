@@ -1,10 +1,22 @@
 import { Body, Delete, Get, Patch, Path, Post, Query, Route, Tags } from "tsoa";
 
+/*
+TODO:
+  -ugotovit kaj dat za route
+  -definirat vse funkcije v obliki controlerja
+  -urediti funkcije v notesService
+  -ugotoviti kako definirati INote
+*/
+
+//import { INote } from "./entitiesNote";
 import {
   ICreateNoteRequest,
   IUpdateNoteRequest,
   NoteService,
 } from "./notesService";
+
+var db = require("./database.js");
+
 
 @Route("/api/note/")
 export class NotesController {
@@ -19,7 +31,7 @@ export class NotesController {
   public async GetNotes(
     @Query() note,
     @Query() creation
-  ): Promise<[]> {
+  ): Promise<INote[]> {
     return this.service.getNotes({
       note: note,
       creation: creation,
@@ -32,13 +44,13 @@ export class NotesController {
    */
   @Get("{id}")
   @Tags("Notes")
-  public async GetNoteById(@Path() id: number): Promise<> {
+  public async GetNoteById(@Path() id: number): Promise<INote> {
     return this.service.getNoteById(id);
   }
 
   @Post()
   @Tags("Notes")
-  public async CreateNote(@Body() request: ICreateNoteRequest): Promise<> {
+  public async CreateNote(@Body() request: ICreateNoteRequest): Promise<INote> {
     return this.service.createNote(request);
   }
 
@@ -47,7 +59,7 @@ export class NotesController {
   public async UpdateNote(
     @Path() id: number,
     @Body() request: IUpdateNoteRequest
-  ): Promise<> {
+  ): Promise<INote> {
     return this.service.updateNote(id, request);
   }
 

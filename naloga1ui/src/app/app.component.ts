@@ -66,10 +66,13 @@ export class AppComponent implements OnInit {
   get notesFormGroups() { return this.t.controls as FormGroup[]; }
 
   createNote() {
-
-    this.t.push(this.formBuilder.group({
-        note: ['',Validators.required],
-        creation: ['',Validators.required]
+    /*
+    če naslednjih nekaj vrstic ni, vstavlja v bazo.
+    če to je, ne vstavlja v bazo
+    */
+   this.t.push(this.formBuilder.group({
+    note: ['',Validators.required],
+    creation: ['',Validators.required]
     }));
 
     this.configService.createNote({note: this.userInput,creation: this.userInput1});

@@ -47,9 +47,8 @@
       Klikni tu, če želiš dodati postavko.
     </a>
     </p>
-    <form [formGroup]="dynamicForm">
     <div class="collapse" id="collapseExample">
-      <div class="row" formControlName="noteToLook">
+      <div class="row">
         <div class="col">
          <input [(ngModel)]="userInput" placeholder="Naloga, ki jo dodajaš"
                 type="text"  class="form-control" style="padding-bottom: 2px;" required/>
@@ -59,13 +58,11 @@
                   class="form-control" style="padding-bottom: 2px;" required/>
         </div>
         <div class="col">
-          <label></label>
-          <input type="submit" class="btn btn-secondary"
-                  (click)=createNote() style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani
+          <button type="button" class="btn btn-secondary"
+                  (click)=createNote() style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
         </div>
       </div>
     </div>
-  </form>
 </div>
 <div class="right">
 </div>
