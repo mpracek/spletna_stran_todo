@@ -37,6 +37,11 @@ export class AppComponent implements OnInit {
 
     this.getAllNotes();
 
+    this.dynamicForm = this.formBuilder.group({
+      noteToLook: ['', Validators.required],
+      notesArray: new FormArray([])
+  });
+
   }
 
   onSelect(note: Notes): void {
@@ -58,6 +63,7 @@ export class AppComponent implements OnInit {
     */
   get f() {return this.dynamicForm.controls; }
   get t() {return this.f.note as FormArray; }
+  get notesFormGroups() { return this.t.controls as FormGroup[]; }
 
   createNote() {
 
