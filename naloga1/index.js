@@ -16,9 +16,6 @@ so vedno definirane v xyz.ts.
 
 /*
 TODO:
--uporabi drugi tutorial, ki ga je urška poslala, da povežeš REST API in Angular -> nisem prepričan če deluje
-
-
 ni vec TODO ampak so še vedno odprta vprašanja
 -ugotoviti izvor napake, ki se pojavi ko zaženem:
   src\app>curl -X POST http://localhost:4200/notes/new -H "ContentType: application/json" -d '{"note":"sql"}'

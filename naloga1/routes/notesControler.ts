@@ -13,7 +13,7 @@ import {
 
 import { NotesService, noteCreationParams } from "./notesService";
 
-@Route("note")
+@Route()
 export class NotesControler extends Controler {
   @Get("/api/note/:id")
   public async getNote(

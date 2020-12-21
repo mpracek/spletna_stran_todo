@@ -14,5 +14,8 @@
     "md5": "^2.3.0",
     "sqlite3": "^5.0.0",
     "tsoa": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.14"
   }
 }
