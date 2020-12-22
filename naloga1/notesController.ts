@@ -17,7 +17,7 @@ import {
 var db = require("./database.js");
 
 
-@Route("/api/note/")
+@Route("/api/note")
 export class NotesController {
   /**
    * @isInt note note should be a positive integer
@@ -25,12 +25,11 @@ export class NotesController {
    * @isInt creation creation should be a positive integer
    * @minimum creation 1
    */
-  @Get()
-  @Tags("Notes")
+  @Get("list")
   public async GetNotes(
     @Query() note,
     @Query() creation
-  ): Promise<Notes[]> {
+  ): Promise<Notes> {
     return this.service.getNotes({
       note: note,
       creation: creation,
@@ -42,19 +41,16 @@ export class NotesController {
    * @minimum id 1
    */
   @Get("{id}")
-  @Tags("Notes")
   public async GetNoteById(@Path() id: number): Promise<Notes> {
     return this.service.getNoteById(id);
   }
 
-  @Post()
-  @Tags("Notes")
+  @Post("")
   public async CreateNote(@Body() request: ICreateNoteRequest): Promise<Notes> {
     return this.service.createNote(request);
   }
 
-  @Patch("{id}")
-  @Tags("Notes")
+  @Patch("update")
   public async UpdateNote(
     @Path() id: number,
     @Body() request: IUpdateNoteRequest
@@ -66,8 +62,7 @@ export class NotesController {
    * @isInt id id must be a positive integer
    * @minimum id 1
    */
-  @Delete(`{id}`)
-  @Tags("Notes")
+  @Delete("delete")
   public async DeleteNote(@Path() id: number) {
     return this.service.deleteNote(id);
   }

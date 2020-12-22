@@ -101,7 +101,6 @@ app.post("/api/note/", (req, res, next) => {
     */
     console.log("HERE1", req.body)
     let values = {
-        //zaenkrat privzamemo, da je datum naloge trenutni datum, torej ko se je nalogo zamislilo se je začela -> tisto minuto
         creation: req.body.params.creation,
         note: req.body.params.note
     };
