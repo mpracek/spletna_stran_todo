@@ -71,8 +71,8 @@ export class AppComponent implements OnInit {
     če to je, ne vstavlja v bazo
     */
    this.t.push(this.formBuilder.group({
-    note: ['',Validators.required],
-    creation: ['',Validators.required]
+    userInput: ['',Validators.required],
+    userInput1: ['',Validators.required]
     }));
 
     this.configService.createNote({note: this.userInput,creation: this.userInput1});
