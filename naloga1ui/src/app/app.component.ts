@@ -6,13 +6,13 @@ import { Subscription } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { trigger, state, style, animate, transition, query, stagger } from '@angular/animations';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl, ReactiveFormsModule  } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations:[]
+  animations: []
 })
 
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   title = 'Zadolzitve';
 
   selectedNote: Notes;
-  dynamicForm: FormGroup;
+  // dynamicForm: FormGroup;
 
   constructor(
     private configService: AppConfigService,
@@ -30,17 +30,18 @@ export class AppComponent implements OnInit {
 
   notes = [];
 
-  userInput = null;
-  userInput1 = null;
+  // userInput = null;
+  // userInput1 = null;
+  submit: boolean = false;
 
   ngOnInit() {
     this.getAllNotes();
   }
 
-   form_control = new FormGroup({
-      note_control : new FormControl('',Validators.required),
-      creation_control : new FormControl('',Validators.required)
-    });
+  form_control = new FormGroup({
+    note_control: new FormControl('', Validators.required),
+    creation_control: new FormControl('', Validators.required)
+  });
 
 
 
@@ -58,12 +59,16 @@ export class AppComponent implements OnInit {
   }
 
 
-    createNote() {
-    this.configService.createNote({note: this.userInput,creation: this.userInput1});
-    this.userInput = null;
-    this.userInput1 = null;
+  createNote() {
+    this.submit = true;
+    if (this.form_control.invalid) return;
+    this.configService.createNote({ note: this.form_control.value.note_control, creation: this.form_control.value.creation_control });
+    // this.userInput = null;
+    // this.userInput1 = null;
     this.getAllNotes();
-    this.dynamicForm.reset();
+    this.form_control.reset();
+    this.submit = false;
+    // this.dynamicForm.reset();
   }
 
 
@@ -108,7 +113,7 @@ export const listAnimation = trigger('listAnimation', [
     ),
     query(':leave',
       animate('200ms', style({ opacity: 0 })),
-      { optional: true}
+      {optional: true}
     )
   ])
 ]);
