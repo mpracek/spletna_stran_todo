@@ -23,7 +23,7 @@ export class NotesController {
   public async GetNotes(
     @Query() note,
     @Query() creation
-  ): Promise<Notes> {
+  ): Promise<any[]> {
     return this.service.getNotes({
       note: note,
       creation: creation,
@@ -31,12 +31,12 @@ export class NotesController {
   }
 
   @Get("{id}")
-  public async GetNoteById(@Path() id: number): Promise<Notes> {
+  public async GetNoteById(@Path() id: number): Promise<any> {
     return this.service.getNoteById(id);
   }
 
   @Post("")
-  public async CreateNote(@Body() request: ICreateNoteRequest): Promise<Notes> {
+  public async CreateNote(@Body() request: ICreateNoteRequest): Promise<any> {
     return this.service.createNote(request);
   }
 
@@ -44,7 +44,7 @@ export class NotesController {
   public async UpdateNote(
     @Path() id: number,
     @Body() request: IUpdateNoteRequest
-  ): Promise<Notes> {
+  ): Promise<any> {
     return this.service.updateNote(id, request);
   }
 

@@ -2,7 +2,7 @@
 s čim moramo zamenjati repozitorij?
 
 kaj moramo uvoziti
-import { INote } from "../../node/database/entities/Note";
+import { any } from "../../node/database/entities/Note";
 */
 
 
@@ -22,8 +22,8 @@ interface IGetNoteParams {
 }
 
 export class NoteService {
-  public async getNoteById(id: number): Promise<INote> {
-    const Note = await this.repository.findOne({
+  public async getNoteById(id: number): Promise<any> {
+    const Note = await this.note.findOne({
       where: {
         id,
       },
@@ -35,11 +35,11 @@ export class NoteService {
   public async getNotes({
     note,
     creation,
-  }: IGetNoteParams): Promise<Array<INote>> {
+  }: IGetNoteParams): Promise<Array<any>> {
     const take = pageSize;
     const skip = take && page && (page - 1) * take;
 
-    return await this.repository.find({
+    return await this.note.find({
       take,
       skip,
       order: {
@@ -51,7 +51,7 @@ export class NoteService {
   public async createNote({ note,creation }: ICreateNoteRequest) {
 
     try {
-      return await this.repository.create({
+      return await this.note.create({
         note,
         creation
       });
@@ -62,7 +62,7 @@ export class NoteService {
 
   public async deleteNote(NoteId: number): Promise<void> {
     const Note = await this.getNoteById(NoteId);
-    await this.repository.delete({
+    await this.note.delete({
       id: note.id,
     });
   }
@@ -70,12 +70,12 @@ export class NoteService {
   public async updateNote(
     id: number,
     { note,creation }: IUpdateNoteRequest
-  ): Promise<INote> {
+  ): Promise<any> {
 
     const Note = await this.getNoteById(NoteId);
 
     try {
-      return await this.repository.update({
+      return await this.note.update({
         ...Note,
         note,
         creation
