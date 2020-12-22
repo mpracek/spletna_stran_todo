@@ -50,6 +50,8 @@ img {
   float:center;
   width: 20%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .main {
@@ -62,13 +64,38 @@ img {
   padding-right:10px;
   float:right;
   width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-input {
+  padding:10px;
+  float:center;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-input {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-input {
+  padding-right:10px;
+  float:right;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
 }
 
 
-/* Use a media query to add a break point at 800px: */
+/* Use a media query to add a break point at 1550px: */
 @media screen and (max-width:1550px) {
   .left, .main, .right {
-    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+    width:100%; /* The width is 100%, when the viewport is 1550px or smaller */
   }
 }
 
