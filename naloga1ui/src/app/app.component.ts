@@ -34,9 +34,7 @@ export class AppComponent implements OnInit {
   userInput1 = null;
 
   ngOnInit() {
-
     this.getAllNotes();
-
   }
 
    form_control = new FormGroup({
@@ -59,25 +57,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-    /*
-    vir za dynamic form je jason watt moore https://jasonwatmore.com/post/2020/09/18/angular-10-dynamic-reactive-forms-example
-    */
-
-    get t() {return this.form_control.controls.note as FormArray; }
-    get notesFormGroups() { return this.t.controls as FormGroup[]; }
-
 
     createNote() {
-    /*
-    če naslednjih nekaj vrstic ni, vstavlja v bazo.
-    če to je, ne vstavlja v bazo
-
-   this.t.push(this.formBuilder.group({
-    note_control: ['',Validators.required],
-    creation_control: ['',Validators.required]
-    }));
-    */
-
     this.configService.createNote({note: this.userInput,creation: this.userInput1});
     this.userInput = null;
     this.userInput1 = null;
