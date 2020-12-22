@@ -39,10 +39,11 @@ export class AppComponent implements OnInit {
 
   }
 
-  form_control = new FormGroup({
-    note_control : new FormControl(Validators.required),
-    creation_control : new FormControl(Validators.required)
-  });
+   form_control = new FormGroup({
+      note_control : new FormControl('',Validators.required),
+      creation_control : new FormControl('',Validators.required)
+    });
+
 
 
   onSelect(note: Notes): void {
@@ -60,10 +61,9 @@ export class AppComponent implements OnInit {
 
     /*
     vir za dynamic form je jason watt moore https://jasonwatmore.com/post/2020/09/18/angular-10-dynamic-reactive-forms-example
-    s pomočjo tega vpelji potrebne funkcije
     */
-    get f() {return this.dynamicForm.controls; }
-    get t() {return this.f.note as FormArray; }
+
+    get t() {return this.form_control.controls.note as FormArray; }
     get notesFormGroups() { return this.t.controls as FormGroup[]; }
 
 
@@ -71,15 +71,12 @@ export class AppComponent implements OnInit {
     /*
     če naslednjih nekaj vrstic ni, vstavlja v bazo.
     če to je, ne vstavlja v bazo
-    */
-   this.t.push(
-      this.formBuilder.group({
-      note_control : ['',Validators.required],
-      creation_control : ['',Validators.required]
-    })
-   );
 
-    this.form_control
+   this.t.push(this.formBuilder.group({
+    note_control: ['',Validators.required],
+    creation_control: ['',Validators.required]
+    }));
+    */
 
     this.configService.createNote({note: this.userInput,creation: this.userInput1});
     this.userInput = null;

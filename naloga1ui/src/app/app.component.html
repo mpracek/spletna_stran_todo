@@ -51,16 +51,16 @@
       <div class="row">
         <form [formGroup]="form_control" (ngSubmit)="createNote()" class="form-row">
         <div class="col">
-         <input [(ngModel)]="userInput" placeholder="Naloga, ki jo dodajaš" [formControl]="note_control"
+         <input [(ngModel)]="userInput" placeholder="Naloga, ki jo dodajaš" formControlName="note_control"
                 type="text"  class="form-control" style="padding-bottom: 2px;" required/>
         </div>
         <div class="col">
-          <input [(ngModel)]="userInput1" placeholder="Datum dodajanja" type="date" [formControl]="creation_control"
+          <input [(ngModel)]="userInput1" placeholder="Datum dodajanja" type="date" formControlName="creation_control"
                   class="form-control" style="padding-bottom: 2px;" required/>
         </div>
         <div class="col">
-          <button type="submit" class="btn btn-secondary"
-          [disabled]="!form_control.valid" style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
+          <button type="submit" class="btn btn-secondary" [disabled]="!form_control.valid"
+                  style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
         </div>
       </form>
       </div>
