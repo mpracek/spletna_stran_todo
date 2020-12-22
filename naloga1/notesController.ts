@@ -19,12 +19,6 @@ var db = require("./database.js");
 
 @Route("/api/note")
 export class NotesController {
-  /**
-   * @isInt note note should be a positive integer
-   * @minimum note 1
-   * @isInt creation creation should be a positive integer
-   * @minimum creation 1
-   */
   @Get("list")
   public async GetNotes(
     @Query() note,
@@ -36,10 +30,6 @@ export class NotesController {
     });
   }
 
-  /**
-   * @isInt id id must be a positive integer
-   * @minimum id 1
-   */
   @Get("{id}")
   public async GetNoteById(@Path() id: number): Promise<Notes> {
     return this.service.getNoteById(id);
@@ -58,10 +48,6 @@ export class NotesController {
     return this.service.updateNote(id, request);
   }
 
-  /**
-   * @isInt id id must be a positive integer
-   * @minimum id 1
-   */
   @Delete("delete")
   public async DeleteNote(@Path() id: number) {
     return this.service.deleteNote(id);
