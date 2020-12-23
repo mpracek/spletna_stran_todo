@@ -2,6 +2,7 @@
 s čim moramo zamenjati note v this.note.?
 */
 
+import { Notes } from "./notes"
 
 export interface ICreateNoteRequest {
   note: string;
@@ -18,9 +19,12 @@ interface IGetNoteParams {
   creation: Date;
 }
 
+
+export type NoteCreationParams = Pick<Notes, "id" | "note" | "creation">;
+
 export class NoteService {
-  public async getNoteById(id: number): Promise<any> {
-    const Note = await this.note.findOne({
+  public async getNoteById(id: number): Promise<Notes> {
+    const Note = await this.Notes.findOne({
       where: {
         id,
       },
@@ -31,7 +35,8 @@ export class NoteService {
   public async getNotes({
     note,
     creation,
-  }: IGetNoteParams): Promise<Array<any>> {
+  }: IGetNoteParams): Promise<Array<Notes>> {
+    //ne vem kaj tukaj
       const list = await this
     }
 
@@ -51,7 +56,7 @@ export class NoteService {
   public async updateNote(
     id: number,
     { note,creation }: IUpdateNoteRequest
-  ): Promise<any> {
+  ): Promise<Notes> {
 
     const Note = await this.getNoteById(id);
 
