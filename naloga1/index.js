@@ -127,13 +127,13 @@ app.post("/api/note/update", (req, res, next) => {
   */
   //spremenimo le točno določen id
   let values = {
-      //datum naloge se ne spremeni, ko spremenimo nalogo. Datum ostane isti, sicer bi ustvarili novo nalogo
       id: req.body.params.id,
-      note: req.body.params.note
+      note: req.body.params.note,
+      creation: req.body.params.creation
   };
   console.log(values);
-  var sql = 'UPDATE notes SET note = ? WHERE id = ?'
-  var params = [values.note,values.id]
+  var sql = 'UPDATE notes SET (note,creation) = (?,?) WHERE id = ?'
+  var params = [values.note,values.creation,values.id]
   console.log(params);
   db.run(sql, params, function (err, result) {
       if (err) {

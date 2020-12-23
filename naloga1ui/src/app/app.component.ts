@@ -30,16 +30,17 @@ export class AppComponent implements OnInit {
 
   notes = [];
 
-  userInput = null;
-  userInput1 = null;
+  //userInput = null;
+  //userInput1 = null;
+  submit: boolean = false;
 
   ngOnInit() {
     this.getAllNotes();
   }
 
    form_control = new FormGroup({
-      note_control : new FormControl('',Validators.required),
-      creation_control : new FormControl('',Validators.required)
+      note_control : new FormControl('', Validators.required),
+      creation_control : new FormControl('', Validators.required)
     });
 
 
@@ -59,17 +60,18 @@ export class AppComponent implements OnInit {
 
 
     createNote() {
-    this.configService.createNote({note: this.userInput,creation: this.userInput1});
-    this.userInput = null;
-    this.userInput1 = null;
+    this.submit = true;
+    if (this.form_control.invalid) return;
+    this.configService.createNote({ note: this.form_control.value.note_control, creation: this.form_control.value.creation_control });
     this.getAllNotes();
-    this.dynamicForm.reset();
+    this.form_control.reset();
+    this.submit = false;
   }
 
 
-  updateNote(note) {
-    console.log("UPDATE", note);
-    this.configService.updateNote(note);
+  updateNote(noteUpdate) {
+    console.log("UPDATE", noteUpdate);
+    this.configService.updateNote(noteUpdate);
     this.getAllNotes();
     this.decline();
   }

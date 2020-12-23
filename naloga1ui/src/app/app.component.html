@@ -49,21 +49,23 @@
     </p>
     <div class="collapse" id="collapseExample">
       <!--<div class="row">-->
-      <form [formGroup]="form_control" (ngSubmit)="createNote()">
+      <form [formGroup]="form_control">
         <div  class="form-row">
             <div class="col-sm-1"></div>
             <div class="col">
-              <input [(ngModel)]="userInput" placeholder="Nova naloga" formControlName="note_control"
-                    type="text"  class="form-control" style="padding-bottom: 2px;" required/>
+              <input placeholder="Nova naloga" formControlName="note_control"
+                    type="text"  class="form-control" style="padding-bottom: 2px;"/>
+                    <div *ngIf="submit && form_control.get('note_control') && form_control.get('note_control').errors" class="alert alert-danger">Naloga je obvezna</div>
             </div>
             <div class="col-sm-1"></div>
             <div class="col">
-              <input [(ngModel)]="userInput1" placeholder="Datum dodajanja" type="date" formControlName="creation_control"
-                     class="form-control" style="padding-bottom: 2px;" required/>
+              <input placeholder="Datum dodajanja" type="date" formControlName="creation_control"
+                     class="form-control" style="padding-bottom: 2px;" />
+                     <div *ngIf="submit && form_control.get('note_control') && form_control.get('note_control').errors" class="alert alert-danger">Datum je obvezen</div>
             </div>
             <div class="col-sm-1"></div>
            <div class="col-sm">
-              <button type="submit" class="btn btn-secondary" [disabled]="!form_control.valid"
+              <button type="submit" class="btn btn-secondary" (click) = 'createNote()'
                       style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
              </div>
         </div>
@@ -129,17 +131,18 @@
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2 style="color: whitesmoke;">Uredi nalogo</h2>
-                <div style="padding-bottom: .5em;text-align: center;"><span>Datum nastanka:  </span>{{selectedNote.creation}}</div>
+                <div style="padding-bottom: .5em;text-align: center;"><span>Podatki naloge: </span></div>
                 <div>
                   <label>
-                    <input [(ngModel)]="selectedNote.note" placeholder="note" class="form-control"/>
+                    <input [(ngModel)]="selectedNote.creation" placeholder="creation" class="form-control"required type="date"/>
+                    <input [(ngModel)]="selectedNote.note" placeholder="note" class="form-control"required />
                   </label>
                 </div>
             <p>Ali res želite spremeniti?</p>
             <!--Gumba za potrditev/preklic-->
             <div class="row">
               <div class="col">
-              <button type="button" class="btn btn-secondary btn-block" (click)="updateNote(selectedNote)">Potrdi</button>
+              <button type="submit" class="btn btn-secondary btn-block" (click)="updateNote(selectedNote)">Potrdi</button>
               </div>
               <div class="col">
               <button type="button" class="btn btn-secondary btn-block" (click)="decline()" >Prekliči</button>
