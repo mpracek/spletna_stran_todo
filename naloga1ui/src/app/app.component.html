@@ -131,11 +131,11 @@
           <ng-template #urejanje>
             <div class="modal-body text-center">
             <h2 style="color: whitesmoke;">Uredi nalogo</h2>
-                <div style="padding-bottom: .5em;text-align: center;"><span>Podatki naloge: </span></div>
+                <div style="padding-bottom: .5em;text-align: center;"><span>Spremeni podatke naloge: </span></div>
                 <div>
                   <label>
-                    <input [(ngModel)]="selectedNote.creation" placeholder="creation" class="form-control"required type="date"/>
                     <input [(ngModel)]="selectedNote.note" placeholder="note" class="form-control"required />
+                    <input [(ngModel)]="selectedNote.creation" placeholder="creation" class="form-control"required type="date"/>
                   </label>
                 </div>
             <p>Ali res želite spremeniti?</p>
