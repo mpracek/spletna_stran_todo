@@ -3,6 +3,9 @@ s čim moramo zamenjati note v this.note.?
 */
 
 import { Notes } from "./notes"
+var db = require("./database.js");
+
+
 
 export interface ICreateNoteRequest {
   note: string;
@@ -24,7 +27,7 @@ export type NoteCreationParams = Pick<Notes, "id" | "note" | "creation">;
 
 export class NoteService {
   public async getNoteById(id: number): Promise<Notes> {
-    const Note = await this.Notes.findOne({
+    const Note = await this.note.findOne({
       where: {
         id,
       },
@@ -36,8 +39,11 @@ export class NoteService {
     note,
     creation,
   }: IGetNoteParams): Promise<Array<Notes>> {
-    //ne vem kaj tukaj
-      }
+    //moja ideja, izpeljana iz index.js
+    var sql = "SELECT * FROM notes"
+    var params = []
+    db.all(sql, params);
+  }
 
   public async createNote({ note,creation }: ICreateNoteRequest) {
       return await this.note.create({
