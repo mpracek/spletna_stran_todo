@@ -27,11 +27,9 @@ export type NoteCreationParams = Pick<Notes, "id" | "note" | "creation">;
 
 export class NoteService {
   public async getNoteById(id: number): Promise<Notes> {
-    const Note = await this.note.findOne({
-      where: {
-        id,
-      },
-    });
+    var sql = "SELECT * FROM notes where id = ?"
+    var params = [req.params.id];
+    db.get(sql, params);
     return Note;
   }
 
