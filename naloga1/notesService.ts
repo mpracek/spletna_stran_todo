@@ -1,8 +1,5 @@
 /*
-s čim moramo zamenjati repozitorij?
-
-kaj moramo uvoziti
-import { any } from "../../node/database/entities/Note";
+s čim moramo zamenjati note v this.note.?
 */
 
 
@@ -28,7 +25,6 @@ export class NoteService {
         id,
       },
     });
-
     return Note;
   }
 
@@ -36,29 +32,14 @@ export class NoteService {
     note,
     creation,
   }: IGetNoteParams): Promise<Array<any>> {
-    const take = pageSize;
-    const skip = take && page && (page - 1) * take;
-
-    return await this.note.find({
-      take,
-      skip,
-      order: {
-        id: "ASC",
-      },
-    });
-  }
+      const list = await this
+    }
 
   public async createNote({ note,creation }: ICreateNoteRequest) {
-
-    try {
       return await this.note.create({
         note,
         creation
-      });
-    } catch (err) {
-      this.checkForUniqueViolation(err);
-    }
-  }
+      });}
 
   public async deleteNote(NoteId: number): Promise<void> {
     const Note = await this.getNoteById(NoteId);
@@ -72,7 +53,7 @@ export class NoteService {
     { note,creation }: IUpdateNoteRequest
   ): Promise<any> {
 
-    const Note = await this.getNoteById(NoteId);
+    const Note = await this.getNoteById(id);
 
     try {
       return await this.note.update({
