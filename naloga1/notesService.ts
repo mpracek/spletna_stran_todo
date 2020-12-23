@@ -37,8 +37,7 @@ export class NoteService {
     creation,
   }: IGetNoteParams): Promise<Array<Notes>> {
     //ne vem kaj tukaj
-      const list = await this
-    }
+      }
 
   public async createNote({ note,creation }: ICreateNoteRequest) {
       return await this.note.create({

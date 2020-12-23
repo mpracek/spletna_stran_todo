@@ -35,7 +35,7 @@ export class NotesController {
     return this.service.getNoteById(id);
   }
 
-  @Post("")
+  @Post("/")
   public async CreateNote(@Body() request: ICreateNoteRequest): Promise<any> {
     return this.service.createNote(request);
   }
