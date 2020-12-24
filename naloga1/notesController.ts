@@ -3,7 +3,6 @@ import { Notes } from "./notes"
 
 /*
 TODO:
-  -ugotovit kaj dat za route
   -definirat vse funkcije v obliki controlerja
   -urediti funkcije v notesService
   -ugotoviti kako definirati Notes
@@ -36,7 +35,7 @@ export class NotesController {
    public async getAll() : Promise<any[]> {
     try {
         let items: any[] = await Notes.find({});
-        items = items.map((item) => { return {id: item._id, description: item.description}});
+        items = items.map((item) => { return {id: note.id, note: note.note, creation:note.creation}});
         return items;
     } catch (err) {
         this.setStatus(500);
