@@ -1,0 +1,63 @@
+{
+    "type": "database",
+    "name": "Abelium_ena",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "data",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE data (id INTEGER PRIMARY KEY, date_creation DATE, note TEXT, finished BOOLEAN)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY"
+                        }
+                    ]
+                },
+                {
+                    "name": "date_creation",
+                    "type": "DATE"
+                },
+                {
+                    "name": "note",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "finished",
+                    "type": "BOOLEAN"
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "2020-12-08",
+                    "baza",
+                    1
+                ],
+                [
+                    2,
+                    "2020-12-08",
+                    "API",
+                    0
+                ],
+                [
+                    3,
+                    "2020-12-08",
+                    "connect API to database",
+                    0
+                ],
+                [
+                    4,
+                    "2020-12-08",
+                    "connect API to Angular",
+                    0
+                ]
+            ]
+        }
+    ]
+}

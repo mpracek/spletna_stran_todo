@@ -1,4 +1,4 @@
-import { Body, Delete, Get, Patch, Path, Post, Query, Route, Tags, BodyProp } from "tsoa";
+import { Body, Delete, Get, Patch, Path, Post, Query, Route, Tags, BodyProp, Controller } from "tsoa";
 import { Notes } from "./notes"
 
 /*
@@ -18,7 +18,7 @@ var db = require("./database.js");
 
 
 @Route("/api/note")
-export class NotesController {
+export class NotesController extends Controller {
 //dve ideji za get, pustim drugi
   /*
   @Get("list")
@@ -32,7 +32,7 @@ export class NotesController {
       creation: creation,
     });
     */
-   public async getAll() : Promise<any[]> {
+   public async getAll() : Promise<Notes[]> {
     try {
         let items: any[] = await Notes.find({});
         items = items.map((item) => { return {id: note.id, note: note.note, creation:note.creation}});
@@ -45,7 +45,7 @@ export class NotesController {
   }
 
   @Get("{id}")
-  public async GetNoteById(@Path() id: number): Promise<any> {
+  public async GetNoteById(@Path() id: number, @Query() note: string, creation:Date): Promise<Notes> {
     return this.service.getNoteById(id);
   }
 
