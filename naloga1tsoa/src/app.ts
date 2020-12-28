@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
 
-export const app = express();
+const app = express();
 
 app.use(
   "/docs",
@@ -22,3 +22,4 @@ app.use(
 );
 app.use(bodyParser.json());
 
+export { app };

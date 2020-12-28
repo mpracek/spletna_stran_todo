@@ -2,26 +2,33 @@
   "name": "express-ab",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "src/server.ts",
+  /*
+  Problem; če dan type:module napiše, da ts ni znanaa končnica, če ne dam, da ne more uvozi zunaj modula
+  "type": "module",
+  */
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
-    "start": "nodemon -x ts-node src/main.ts",
+    "start": "nodemon node src/server.ts",
     "generate": "tsoa swagger",
     "build": "tsc",
+    "type": "module",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
     "swagger": "tsoa spec"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/core": "^11.0.5",
+    "@angular/platform-browser-dynamic": "^11.0.5",
     "express": "^4.17.1",
     "md5": "^2.3.0",
     "sqlite3": "^5.0.0",
     "swagger": "^0.7.5",
     "swagger-ui-express": "^4.1.6",
-    "ts-node": "^7.0.1",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "tsoa": "^3.4.0"
   },
@@ -29,6 +36,7 @@
     "@types/node": "^14.14.14",
     "@types/sqlite3": "^3.1.6",
     "nodemon": "^1.19.4",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^3.9.7"
   }
 }
