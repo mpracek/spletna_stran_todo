@@ -20,7 +20,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 db.run(insert, ["2020-12-07","first"])
                 db.run(insert, ["2020-12-08","second"])
             }
-        });  
+        });
     }
 });
 

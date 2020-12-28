@@ -13,7 +13,7 @@ import { Notes } from './notes';
 
 import {
   db, SQL_CREATE_NOTE_TABLE,SQL_INSERT_DATA,SQL_QUERY_NOTES,SQL_UPDATE_DATA,SQL_DELETE_DATA, SQL_COUNT_DATA
-} from '../database';
+} from './database';
 
 export type NoteInsertParam = Pick<Notes,"creation"|"note">;
 export type NoteUpdateParam = Pick<Notes,"id"|"creation"|"note">;
@@ -21,7 +21,7 @@ export type NoteQueryParam = Pick<Notes,"id">;
 export type NoteDeleteParam = Pick<Notes,"id">;
 
 export class NotesService {
-  public async getNotes(NoteQueryParam: NoteQueryParam): Promise<Notes[]> {
+  public async getNotes(): Promise<Notes[]> {
     return new Promise((resolve,reject)=> {
       db.all(SQL_QUERY_NOTES,(err:any, vals:Notes[])=>{
         if (err) {
@@ -46,8 +46,9 @@ export class NotesService {
     db.run (SQL_UPDATE_DATA, [NoteUpdateParam.note,NoteUpdateParam.creation,NoteUpdateParam.id]);
 }
 
-  public deleteNote(NoteDeleteParam:NoteDeleteParam): Notes {
+  public deleteNote(NoteDeleteParam:NoteDeleteParam): void {
     db.run(SQL_DELETE_DATA, [NoteDeleteParam.id]);
   }
 
 }
+
