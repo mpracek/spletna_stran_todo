@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   /*
-  Problem; če dan type:module napiše, da ts ni znanaa končnica, če ne dam, da ne more uvozi zunaj modula
+  Problem; če dan type:module napiše, da ts ni znanaa končnica, če ne dam, da ne more uvozi zunaj modulacdm
   "type": "module",
   */
   "scripts": {
