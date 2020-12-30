@@ -2,6 +2,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
+import { RegisterRoutes } from "../build/routes.js";
 
 const app = express();
 
@@ -23,13 +24,6 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use(function (req, res) {
-  res.status(404);
-});
+RegisterRoutes(app);
 
-app.get("/", (req, res, next) => {
-  res.json({ "message": "Ok" })
-});
-
-
-export { app };
+export { app }

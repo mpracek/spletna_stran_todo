@@ -2,6 +2,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
+import { RegisterRoutes } from "../build/routes";
 
 const app = express();
 
@@ -10,7 +11,8 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(undefined, {
     swaggerOptions: {
-      url: "/swagger.json",
+      url: "./build/swagger.json",
+      validatorUrl : null
     },
   })
 );
@@ -22,4 +24,6 @@ app.use(
 );
 app.use(bodyParser.json());
 
-export { app };
+RegisterRoutes(app);
+
+export { app }

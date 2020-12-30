@@ -1,16 +1,4 @@
 {
-	"info": {
-		"title": "tsoa_project",
-		"version": "1.0.0",
-		"license": {
-			"name": "MIT"
-		},
-		"contact": {
-			"name": "mpracek ",
-			"email": "mpracek299@gmail.com"
-		}
-	},
-	"openapi": "3.0.0",
 	"components": {
 		"examples": {},
 		"headers": {},
@@ -104,6 +92,18 @@
 		},
 		"securitySchemes": {}
 	},
+	"info": {
+		"title": "tsoa_project",
+		"version": "1.0.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "mpracek ",
+			"email": "mpracek299@gmail.com"
+		}
+	},
+	"openapi": "3.0.0",
 	"paths": {
 		"/api/note/list": {
 			"get": {
