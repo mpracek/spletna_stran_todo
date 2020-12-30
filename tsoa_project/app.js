@@ -11,6 +11,7 @@ app.use(
   swaggerUi.setup(undefined, {
     swaggerOptions: {
       url: "./build/swagger.json",
+      validatorUrl : null
     },
   })
 );
@@ -21,5 +22,14 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+app.use(function (req, res) {
+  res.status(404);
+});
+
+app.get("/", (req, res, next) => {
+  res.json({ "message": "Ok" })
+});
+
 
 export { app };

@@ -1,7 +1,6 @@
 /*
 TODO:
 typeorm uporaba
-swagger!
 dependency injection: ko kličemo constructor->service, se ta service sam postavi. DepInj je tak mehanizem
                       princip: anotira se zadeve
                       ideja: postavi se kontainer npr iocContainter, se zadeve postavijo same
@@ -23,7 +22,7 @@ za to potrebujemo še @Factory
                      export class NotesService {
                        public async getNotes(): Promise<Notes[]> {
                          return new Promise((resolve,reject)=> {
-                           db.all(SQL_QUERY_NOTES,(err:any, vals:Notes[])=>{
+                           db.get(SQL_QUERY_NOTES,(err:any, vals:Notes[])=>{
                              if (err) {
                                console.log('reject');
                                reject('Error: get Notes query failed');
@@ -47,7 +46,7 @@ za to potrebujemo še @Factory
                      }
                      
                        public deleteNote(NoteDeleteParam:NoteDeleteParam): void {
-                         db.run(SQL_DELETE_DATA, [NoteDeleteParam.id]);
+                         db.get(SQL_DELETE_DATA, [NoteDeleteParam.id]);
                        }
                      
                      }

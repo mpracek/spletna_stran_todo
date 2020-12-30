@@ -7,6 +7,7 @@ konstante so nizi, ki vsebujejo SQL ukaze.
 var sqlite3 = require('sqlite3').verbose();
 import { Database } from 'sqlite3';
 
+var sqlite3 = require('sqlite3').verbose()
 
 //baza s katero bomo delali
 const bazaPodatkov  = "db.sqlite";
@@ -19,6 +20,18 @@ const db = new sqlite3.Database(bazaPodatkov, (err: { message: any; }) => {
   }
   else{
       console.log('Connected to the SQLite database.')}
+      db.run(`CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, creation DATE, note TEXT)`,
+        (err: { message: any; }) => {
+            if (err) {
+                console.error(err.message)
+                // Table already created
+            }else{
+                // Table just created, creating some rows
+                var insert = 'INSERT INTO notes (creation, note) VALUES (?,?)'
+                db.run(insert, ["2020-12-07","first"])
+                db.run(insert, ["2020-12-08","second"])
+            }
+        });
     });
 
 

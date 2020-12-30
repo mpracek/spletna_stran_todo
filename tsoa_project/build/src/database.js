@@ -1,0 +1,34 @@
+"use strict";
+/*
+V tej datoteki imamo konstante, ki nam bodo olajšale delo z SQL.
+konstante so nizi, ki vsebujejo SQL ukaze.
+*/
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SQL_COUNT_DATA = exports.SQL_DELETE_DATA = exports.SQL_UPDATE_DATA = exports.SQL_QUERY_NOTES = exports.SQL_INSERT_DATA = exports.SQL_CREATE_NOTE_TABLE = exports.db = void 0;
+//Uvoz potrebnih knjižnjic
+var sqlite3 = require('sqlite3').verbose();
+//baza s katero bomo delali
+var bazaPodatkov = "db.sqlite";
+var db = new sqlite3.Database(bazaPodatkov, function (err) {
+    if (err) {
+        // Cannot open database
+        console.error(err.message);
+        throw err;
+    }
+    else {
+        console.log('Connected to the SQLite database.');
+    }
+});
+exports.db = db;
+var SQL_CREATE_NOTE_TABLE = "\n    CREATE TABLE IF NOT EXISTS  notes (\n      id INTEGER PRIMARY KEY,\n      creation DATE NOT NULL,\n      note TEXT NOT NULL\n    )";
+exports.SQL_CREATE_NOTE_TABLE = SQL_CREATE_NOTE_TABLE;
+var SQL_QUERY_NOTES = "SELECT * FROM notes";
+exports.SQL_QUERY_NOTES = SQL_QUERY_NOTES;
+var SQL_INSERT_DATA = "INSERT INTO notes (creation, note) VALUES (?,?)";
+exports.SQL_INSERT_DATA = SQL_INSERT_DATA;
+var SQL_UPDATE_DATA = "UPDATE notes SET (note,creation) = (?,?) WHERE id = ?";
+exports.SQL_UPDATE_DATA = SQL_UPDATE_DATA;
+var SQL_DELETE_DATA = "DELETE FROM notes WHERE id =?";
+exports.SQL_DELETE_DATA = SQL_DELETE_DATA;
+var SQL_COUNT_DATA = +"COUNT * FROM notes";
+exports.SQL_COUNT_DATA = SQL_COUNT_DATA;
