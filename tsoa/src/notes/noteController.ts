@@ -12,6 +12,13 @@ export class NotesController extends Controller {
     return new NotesService().getNotes();
   }
 
+  @Post("/{id}")
+  public async findOneNote(
+    @Body() requestBody: NoteQueryParam): Promise<void> {
+      return new NotesService().findOneNote(requestBody);
+    }
+
+
   @Post("/")
   public async insertNote(
     @Body() requestBody: NoteInsertParam): Promise<Notes> {

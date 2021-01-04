@@ -38,11 +38,10 @@ za to potrebujemo še @Factory
                         db.run(SQL_FIND_DATA,[NoteQueryParam.id])
                       }
                      
-                       public insertNote(NoteInsertParam:NoteInsertParam): void {
-                       //Notes {
-                         //let noviID = SQL_COUNT_DATA + 1;
+                       public insertNote(NoteInsertParam:NoteInsertParam): Notes {
+                         let noviID = SQL_COUNT_DATA + 1;
                          db.run(SQL_INSERT_DATA,[NoteInsertParam.creation,NoteInsertParam.note]);
-                         //return {id: noviID ,...NoteInsertParam }
+                         return {id: noviID ,...NoteInsertParam }
                        }
                      
                        public updateNote(NoteUpdateParam:NoteUpdateParam): void {
