@@ -39,7 +39,7 @@ za to potrebujemo še @Factory
                       }
                      
                        public insertNote(NoteInsertParam:NoteInsertParam): Notes {
-                         let noviID = SQL_COUNT_DATA + 1;
+                         let noviID = SQL_COUNT_DATA;
                          db.run(SQL_INSERT_DATA,[NoteInsertParam.creation,NoteInsertParam.note]);
                          return {id: noviID ,...NoteInsertParam }
                        }

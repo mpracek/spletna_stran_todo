@@ -43,15 +43,16 @@ const SQL_CREATE_NOTE_TABLE: string = `
 
 const SQL_QUERY_NOTES: string = `SELECT * FROM notes`;
 
-const SQL_INSERT_DATA: string  = `INSERT INTO notes (creation, note) VALUES (?,?)`
+const SQL_INSERT_DATA: string  = `INSERT INTO notes (creation, note) VALUES (?,?)`;
 
-const SQL_UPDATE_DATA: string = `UPDATE notes SET (note,creation) = (?,?) WHERE id = ?`
+const SQL_UPDATE_DATA: string = `UPDATE notes SET (note,creation) = (?,?) WHERE id = ?`;
 
-const SQL_DELETE_DATA: string = `DELETE FROM notes WHERE id =?`
+const SQL_DELETE_DATA: string = `DELETE FROM notes WHERE id =?`;
 
 const SQL_FIND_DATA: string = `SELECT FROM notes WHERE id =?`;
 
-var SQL_COUNT_DATA: number = +`COUNT * FROM notes`
+var SQL_COUNT_DATA: number = db.run(`SELECT COUNT(id) FROM notes`) +1 ;
+console.log(SQL_COUNT_DATA);
 
 export {
   db, SQL_CREATE_NOTE_TABLE,SQL_INSERT_DATA,SQL_QUERY_NOTES,SQL_UPDATE_DATA,SQL_DELETE_DATA, SQL_COUNT_DATA, SQL_FIND_DATA
