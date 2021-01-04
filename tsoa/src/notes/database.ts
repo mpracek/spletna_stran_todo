@@ -51,7 +51,7 @@ const SQL_DELETE_DATA: string = `DELETE FROM notes WHERE id =?`;
 
 const SQL_FIND_DATA: string = `SELECT FROM notes WHERE id =?`;
 
-var SQL_COUNT_DATA: number = db.run(`SELECT COUNT(id) FROM notes`) +1 ;
+var SQL_COUNT_DATA: number = db.run(`SELECT MAX(id) FROM notes`) +1 ;
 console.log(SQL_COUNT_DATA);
 
 export {

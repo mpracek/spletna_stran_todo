@@ -19,6 +19,7 @@ var db = new sqlite3.Database(bazaPodatkov, function (err) {
     else {
         console.log('Connected to the SQLite database.');
     }
+    /*
     db.run("CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, creation DATE, note TEXT)", function (err) {
         if (err) {
             console.error(err.message);
@@ -31,6 +32,7 @@ var db = new sqlite3.Database(bazaPodatkov, function (err) {
             db.run(insert, ["2021-01-04", "second_test"]);
         }
     });
+    */
 });
 exports.db = db;
 var SQL_CREATE_NOTE_TABLE = "\n    CREATE TABLE IF NOT EXISTS  notes (\n      id INTEGER PRIMARY KEY,\n      creation DATE NOT NULL,\n      note TEXT NOT NULL\n    )";
@@ -45,6 +47,6 @@ var SQL_DELETE_DATA = "DELETE FROM notes WHERE id =?";
 exports.SQL_DELETE_DATA = SQL_DELETE_DATA;
 var SQL_FIND_DATA = "SELECT FROM notes WHERE id =?";
 exports.SQL_FIND_DATA = SQL_FIND_DATA;
-var SQL_COUNT_DATA = +"COUNT * FROM notes";
+var SQL_COUNT_DATA = db.run(`SELECT MAX(id) FROM notes`) +1 ;
 exports.SQL_COUNT_DATA = SQL_COUNT_DATA;
-console.log(SQL_COUNT_DATA);
+console.log("Presteli smo: ",SQL_COUNT_DATA);

@@ -1,4 +1,5 @@
 "use strict";
+import express, { Response, Request } from "express";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -14,3 +15,8 @@ exports.app.use(body_parser_1.default.urlencoded({
 }));
 exports.app.use(body_parser_1.default.json());
 routes_1.RegisterRoutes(exports.app);
+app.use("/docs", swaggerUi.serve, async (_req, res) => {
+    return res.send(
+      swaggerUi.generateHTML(await import("../build/swagger.json"))
+    );
+  });
