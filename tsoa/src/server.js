@@ -7,4 +7,5 @@ app_1.app.listen(port, function () {
 });
 app_1.app.get("/", function (req, res, next) {
     res.json({ "message": "Ok" });
+    console.log("Odpre povezavo");
 });

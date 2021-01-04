@@ -27,8 +27,8 @@ const db = new sqlite3.Database(bazaPodatkov, (err: { message: any; }) => {
             }else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO notes (creation, note) VALUES (?,?)'
-                db.run(insert, ["2020-12-07","first"])
-                db.run(insert, ["2020-12-08","second"])
+                db.run(insert, ["2021-01-04","first_test"])
+                db.run(insert, ["2021-01-04","second_test"])
             }
         });
     });
