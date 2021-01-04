@@ -11,7 +11,7 @@ za to potrebujemo še @Factory
                      import { Notes } from './note';
 
                      import {
-                       db, SQL_CREATE_NOTE_TABLE,SQL_INSERT_DATA,SQL_QUERY_NOTES,SQL_UPDATE_DATA,SQL_DELETE_DATA, SQL_COUNT_DATA
+                       db, SQL_CREATE_NOTE_TABLE,SQL_INSERT_DATA,SQL_QUERY_NOTES,SQL_UPDATE_DATA,SQL_DELETE_DATA, SQL_COUNT_DATA, SQL_FIND_DATA
                      } from './database';
                      
                      export type NoteInsertParam = Pick<Notes,"creation"|"note">;
@@ -34,6 +34,9 @@ za to potrebujemo še @Factory
                          }
                          )
                        }
+                      public findOneNote(NoteQueryParam:NoteQueryParam): void {
+                        db.run(SQL_FIND_DATA,[NoteQueryParam.id])
+                      }
                      
                        public insertNote(NoteInsertParam:NoteInsertParam): Notes {
                          let noviID = SQL_COUNT_DATA + 1;
