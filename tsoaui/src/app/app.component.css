@@ -1,0 +1,146 @@
+.notes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.notes li {
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  border-radius: 4px;
+}
+
+.notes li:hover {
+  position: relative;
+  left: 0;
+  background-color:whitesmoke;
+  margin: .5em;
+  border-radius: 4px;
+}
+
+.notes li:first-of-type {
+  position: relative;
+  left: 0;
+  background-color:whitesmoke;
+  margin: .5em;
+  border-radius: 4px;
+}
+
+/* slike */
+
+img {
+  float: left;
+  height: 10rem;
+  object-fit: cover;
+  width: 25rem;
+  padding-top: 2px;
+}
+
+/* spremembe zaslona */
+* {
+  box-sizing:border-box;
+}
+
+.left {
+  padding:10px;
+  float:center;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  padding-right:10px;
+  float:right;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-input {
+  padding:10px;
+  float:center;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-input {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-input {
+  padding-right:10px;
+  float:right;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Use a media query to add a break point at 1550px: */
+@media screen and (max-width:1550px) {
+  .left, .main, .right {
+    width:100%; /* The width is 100%, when the viewport is 1550px or smaller */
+  }
+}
+
+
+.collapse {
+  padding: 5px;
+}
+
+.form-control {
+  background-color: whitesmoke;
+}
+/*
+Slogi za uporabljene stolpce
+*/
+
+.col {
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.col-2 {
+  align-items: center;
+  justify-content: right;
+  text-align: center;
+}
+
+.col-3 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.col-4 {
+  align-items: center;
+  justify-content: right;
+  text-align: left;
+}
+
+.col-5 {
+  align-items: center;
+  justify-content: right;
+}
+
+.col-6 {
+  align-items: center;
+  justify-content: right;
+}

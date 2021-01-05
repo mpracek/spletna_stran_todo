@@ -1,0 +1,198 @@
+<!-- Da zaženemo aplikacijo potrebujemo npm start-->
+
+<!--Funckije in spremenljivke (npr, userInput, createNote()), ki jih v xyz.html uporabljaš so vedno definirane v xyz.ts.-->
+
+<!-- za potrebe razširitve in skrčitve zaslona -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- za ikone-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--za določanje teme href zamenjamo z primerno temo iz npr bootswatch-->
+<link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.min.css">
+<!-- za vpeljavo bootstrap-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--Naslov strani-->
+<div class="container">
+
+<div class="row">
+<div class="left">
+</div>
+<div class="main">
+  <div class="jumbotron" style="height:10rem; text-align: center;">
+    <h1>Zdravo!</h1>
+    <h3 style="color: whitesmoke; padding-bottom: 10px;"> Pa poglejmo, kaj moraš še storiti!</h3>
+  </div>
+</div >
+</div>
+<div class="right">
+</div>
+
+
+<!--Dodajanje naloge-->
+<div class="row">
+<div class="left">
+</div>
+<div class="col">
+  <p>
+    <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button"
+        aria-expanded="false" aria-controls="collapseExample">
+      Klikni tu, če želiš dodati postavko.
+    </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <!--<div class="row">-->
+      <form [formGroup]="form_control">
+        <div  class="form-row">
+            <div class="col-sm-1"></div>
+            <div class="col">
+              <input placeholder="Nova naloga" formControlName="note_control"
+                    type="text"  class="form-control" style="padding-bottom: 2px;"/>
+                    <div *ngIf="submit && form_control.get('note_control') && form_control.get('note_control').errors" class="alert alert-danger">Naloga je obvezna</div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col">
+              <input placeholder="Datum dodajanja" type="date" formControlName="creation_control"
+                     class="form-control" style="padding-bottom: 2px;" />
+                     <div *ngIf="submit && form_control.get('creation_control') && form_control.get('creation_control').errors" class="alert alert-danger">Datum je obvezen</div>
+            </div>
+            <div class="col-sm-1"></div>
+           <div class="col-sm">
+              <button type="submit" class="btn btn-secondary" (click) = 'createNote()'
+                      style="padding-top: 2px;"><i class="fa fa-check"></i> &nbsp;Shrani</button>
+             </div>
+        </div>
+      </form>
+      <!--</div>-->
+    </div>
+</div>
+<div class="right">
+</div>
+</div>
+
+<!--seznam postavk-->
+<div class="row">
+
+<div class="left">
+  <div class="col">
+      <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.hofer.si/fileadmin/fm-dam/O_HOFERju/Hofer_Scena/2020-06-HOFER-CENA-hofer-si-Landing_banner_01.jpg" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2018/12/Santa-Hero_1920x1080.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+</div>
+
+<div class="col">
+  <div class="main">
+  <ul class="notes">
+    <li style="height: 3rem;color:rgb(104, 102, 102)">
+      <div class="col-4">
+        <b>Naloga</b>
+      </div>
+      <div class="col-4">
+        <b>Datum nastanka</b>
+      </div>
+      <div class="col-2">
+        <b>Uredi</b>
+      </div>
+      <div class="col-2">
+        <b>Izbriši</b>
+      </div>
+    </li>
+    <li *ngFor="let note of notes"
+        [class.selected]="note === selectedNote" (click)="onSelect(note)"
+        style="height: 3rem; color:rgb(104, 102, 102);">
+        <!--style="height: 3rem; width: 45rem;color:rgb(104, 102, 102);">-->
+        <div class="col-4">{{note.note}}</div><div class="col-4">{{note.creation}}</div>
+        <!--Gumb za urejanje-->
+          <div class="col-2">
+      <button type="button" class="btn btn-secondary btn-block" (click)="openModal(urejanje)" ><i class="fa fa-edit">&nbsp;</i></button>
+          <ng-template #urejanje>
+            <div class="modal-body text-center">
+            <h2 style="color: whitesmoke;">Uredi nalogo</h2>
+                <div style="padding-bottom: .5em;text-align: center;"><span>Spremeni podatke naloge: </span></div>
+                <div>
+                  <label>
+                    <input [(ngModel)]="selectedNote.note" placeholder="note" class="form-control"required />
+                    <input [(ngModel)]="selectedNote.creation" placeholder="creation" class="form-control"required type="date"/>
+                  </label>
+                </div>
+            <p>Ali res želite spremeniti?</p>
+            <!--Gumba za potrditev/preklic-->
+            <div class="row">
+              <div class="col">
+              <button type="submit" class="btn btn-secondary btn-block" (click)="updateNote(selectedNote)">Potrdi</button>
+              </div>
+              <div class="col">
+              <button type="button" class="btn btn-secondary btn-block" (click)="decline()" >Prekliči</button>
+              </div>
+            </div>
+          </div>
+          </ng-template>
+          </div>
+        <!--Gumb za izbris-->
+          <div class="col-2">
+        <button type="button" class="btn btn-secondary btn-block" (click)="openModal(brisanje)"><i class="fa fa-close">&nbsp;</i></button>
+          <ng-template #brisanje>
+              <div class="modal-body text-center">
+                <p>Ali res želite izbrisati?</p>
+                <!--Gumba za potrditev/preklic-->
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-5">
+                  <button type="button" class="btn btn-secondary btn-block" (click)="deleteNote(selectedNote)" >Potrdi</button>
+                  </div>
+                  <div class="col-5">
+                  <button type="button" class="btn btn-secondary btn-block" (click)="decline()" >Prekliči</button>
+                  </div>
+                  <div class="col-1"></div>
+                </div>
+              </div>
+          </ng-template>
+          </div>
+       </li>
+  </ul>
+</div>
+</div>
+
+<div class="right">
+<div class="col">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY-5UQtW32IIVY4wsmmybX5SlqIXtQBKGu9w&usqp=CAU" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="data:image/jpeg;base64,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" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+
+</div>
+
+
+</div>
