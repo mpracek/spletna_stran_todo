@@ -4,7 +4,7 @@ V tej datoteki imamo konstante, ki nam bodo olajšale delo z SQL.
 konstante so nizi, ki vsebujejo SQL ukaze.
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SQL_COUNT_DATA = exports.SQL_DELETE_DATA = exports.SQL_UPDATE_DATA = exports.SQL_QUERY_NOTES = exports.SQL_INSERT_DATA = exports.SQL_CREATE_NOTE_TABLE = exports.db = void 0;
+exports.SQL_FIND_DATA = exports.SQL_COUNT_DATA = exports.SQL_DELETE_DATA = exports.SQL_UPDATE_DATA = exports.SQL_QUERY_NOTES = exports.SQL_INSERT_DATA = exports.SQL_CREATE_NOTE_TABLE = exports.db = void 0;
 //Uvoz potrebnih knjižnjic
 //import { Database } from 'sqlite3';
 var sqlite3 = require('sqlite3').verbose();
@@ -23,13 +23,13 @@ var db = new sqlite3.Database(bazaPodatkov, function (err) {
         if (err) {
             console.error(err.message);
             // Table already created
-        }
-        else {
+        } /*
+        else{
             // Table just created, creating some rows
-            var insert = 'INSERT INTO notes (creation, note) VALUES (?,?)';
-            db.run(insert, ["2020-12-07", "first"]);
-            db.run(insert, ["2020-12-08", "second"]);
-        }
+            var insert = 'INSERT INTO notes (creation, note) VALUES (?,?)'
+            db.run(insert, ["2021-01-04","first_test"])
+            db.run(insert, ["2021-01-04","second_test"])
+        }*/
     });
 });
 exports.db = db;
@@ -43,5 +43,8 @@ var SQL_UPDATE_DATA = "UPDATE notes SET (note,creation) = (?,?) WHERE id = ?";
 exports.SQL_UPDATE_DATA = SQL_UPDATE_DATA;
 var SQL_DELETE_DATA = "DELETE FROM notes WHERE id =?";
 exports.SQL_DELETE_DATA = SQL_DELETE_DATA;
-var SQL_COUNT_DATA = +"COUNT * FROM notes";
+var SQL_FIND_DATA = "SELECT * FROM notes WHERE id =?";
+exports.SQL_FIND_DATA = SQL_FIND_DATA;
+var SQL_COUNT_DATA = db.all("SELECT MAX(id) FROM notes") + 1;
 exports.SQL_COUNT_DATA = SQL_COUNT_DATA;
+console.log("stejemo ", SQL_COUNT_DATA);

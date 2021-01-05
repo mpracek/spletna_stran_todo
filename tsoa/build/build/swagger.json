@@ -1,0 +1,235 @@
+{
+    "components": {
+        "examples": {},
+        "headers": {},
+        "parameters": {},
+        "requestBodies": {},
+        "responses": {},
+        "schemas": {
+            "Notes": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "note": {
+                        "type": "string"
+                    },
+                    "creation": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "id",
+                    "note",
+                    "creation"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            },
+            "Pick_Notes.creation-or-note_": {
+                "properties": {
+                    "creation": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "note": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "creation",
+                    "note"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "NoteInsertParam": {
+                "$ref": "#/components/schemas/Pick_Notes.creation-or-note_"
+            },
+            "Pick_Notes.id-or-creation-or-note_": {
+                "properties": {
+                    "creation": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "note": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "creation",
+                    "note",
+                    "id"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "NoteUpdateParam": {
+                "$ref": "#/components/schemas/Pick_Notes.id-or-creation-or-note_"
+            },
+            "Pick_Notes.id_": {
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "description": "From T, pick a set of properties whose keys are in the union K"
+            },
+            "NoteDeleteParam": {
+                "$ref": "#/components/schemas/Pick_Notes.id_"
+            }
+        },
+        "securitySchemes": {}
+    },
+    "info": {
+        "title": "tsoa",
+        "version": "1.0.0",
+        "license": {
+            "name": "MIT"
+        },
+        "contact": {}
+    },
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/note/list": {
+            "get": {
+                "operationId": "GetNotes",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/Notes"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "parameters": []
+            }
+        },
+        "/api/note/{id}": {
+            "get": {
+                "operationId": "FindOneNote",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notes"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "format": "double",
+                            "type": "number"
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/note": {
+            "post": {
+                "operationId": "InsertNote",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notes"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteInsertParam"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/note/update": {
+            "post": {
+                "operationId": "UpdateNote",
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                },
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteUpdateParam"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/note/delete": {
+            "delete": {
+                "operationId": "DeleteNote",
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                },
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteDeleteParam"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ]
+}

@@ -28,22 +28,6 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_Notes.id_": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"id"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"NoteQueryParam": {
-				"$ref": "#/components/schemas/Pick_Notes.id_"
-			},
 			"Pick_Notes.creation-or-note_": {
 				"properties": {
 					"creation": {
@@ -66,28 +50,41 @@
 			},
 			"Pick_Notes.id-or-creation-or-note_": {
 				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
 					"creation": {
 						"type": "string",
 						"format": "date-time"
 					},
 					"note": {
 						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
 					}
 				},
 				"required": [
-					"id",
 					"creation",
-					"note"
+					"note",
+					"id"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
 			"NoteUpdateParam": {
 				"$ref": "#/components/schemas/Pick_Notes.id-or-creation-or-note_"
+			},
+			"Pick_Notes.id_": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
 			"NoteDeleteParam": {
 				"$ref": "#/components/schemas/Pick_Notes.id_"
@@ -128,25 +125,32 @@
 			}
 		},
 		"/api/note/{id}": {
-			"post": {
+			"get": {
 				"operationId": "FindOneNote",
 				"responses": {
-					"204": {
-						"description": "No content"
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/NoteQueryParam"
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Notes"
+								}
 							}
 						}
 					}
-				}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		},
 		"/api/note": {

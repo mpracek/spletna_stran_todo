@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
@@ -74,6 +74,13 @@ var NotesController = /** @class */ (function (_super) {
             });
         });
     };
+    NotesController.prototype.findOneNote = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new notesService_1.NotesService().findOneNote(id)];
+            });
+        });
+    };
     NotesController.prototype.insertNote = function (requestBody) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -100,6 +107,9 @@ var NotesController = /** @class */ (function (_super) {
     __decorate([
         tsoa_1.Get("list")
     ], NotesController.prototype, "getNotes", null);
+    __decorate([
+        tsoa_1.Get("/{id}")
+    ], NotesController.prototype, "findOneNote", null);
     __decorate([
         tsoa_1.Post("/"),
         __param(0, tsoa_1.Body())

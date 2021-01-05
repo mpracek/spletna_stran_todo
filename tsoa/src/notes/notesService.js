@@ -3,22 +3,11 @@
 TODO:
 typeorm uporaba
 dependency injection: ko kličemo constructor->service, se ta service sam postavi. DepInj je tak mehanizem
-                      princip: anotira se zadeve
-                      ideja: postavi se kontainer npr iocContainter, se zadeve postavijo same
+princip: anotira se zadeve
+ideja: postavi se kontainer npr iocContainter, se zadeve postavijo same
 dependency injection je @Inject
 za to potrebujemo še @Factory
-                      */
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+*/
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -65,13 +54,32 @@ var NotesService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        database_1.db.get(database_1.SQL_QUERY_NOTES, function (err, vals) {
+                        database_1.db.all(database_1.SQL_QUERY_NOTES, function (err, vals) {
                             if (err) {
                                 console.log('reject');
                                 reject('Error: get Notes query failed');
                                 return;
                             }
-                            console.log(vals);
+                            //console.log(vals);
+                            //v konzoli res izpise vse
+                            resolve(vals);
+                        });
+                    })];
+            });
+        });
+    };
+    NotesService.prototype.findOneNote = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        database_1.db.get(database_1.SQL_FIND_DATA, [id], function (err, vals) {
+                            if (err) {
+                                console.log('reject', err);
+                                reject('Error: get Notes query failed');
+                                return;
+                            }
+                            //console.log("VALS", vals);
+                            //v konzoli izpiše eno po eno
                             resolve(vals);
                         });
                     })];
@@ -79,15 +87,48 @@ var NotesService = /** @class */ (function () {
         });
     };
     NotesService.prototype.insertNote = function (NoteInsertParam) {
-        var noviID = database_1.SQL_COUNT_DATA + 1;
-        database_1.db.run(database_1.SQL_INSERT_DATA, [NoteInsertParam.creation, NoteInsertParam.note]);
-        return __assign({ id: noviID }, NoteInsertParam);
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        database_1.db.get(database_1.SQL_INSERT_DATA, [NoteInsertParam.creation, NoteInsertParam.note], function (err, vals) {
+                            if (err) {
+                                console.log('reject', err);
+                                reject('Error: insert Notes query failed');
+                                return;
+                            }
+                            console.log("VALS", vals);
+                            //v konzoli izpiše eno po eno
+                            resolve(vals);
+                        });
+                    })];
+            });
+        });
     };
     NotesService.prototype.updateNote = function (NoteUpdateParam) {
-        database_1.db.run(database_1.SQL_UPDATE_DATA, [NoteUpdateParam.note, NoteUpdateParam.creation, NoteUpdateParam.id]);
+        return new Promise(function (resolve, reject) {
+            database_1.db.get(database_1.SQL_UPDATE_DATA, [NoteUpdateParam.note, NoteUpdateParam.creation, NoteUpdateParam.id], function (err, vals) {
+                if (err) {
+                    console.log('reject', err);
+                    reject('Error: update Note query failed');
+                    return;
+                }
+                console.log("VALS", vals);
+                resolve(vals);
+            });
+        });
     };
     NotesService.prototype.deleteNote = function (NoteDeleteParam) {
-        database_1.db.get(database_1.SQL_DELETE_DATA, [NoteDeleteParam.id]);
+        return new Promise(function (resolve, reject) {
+            database_1.db.get(database_1.SQL_DELETE_DATA, [NoteDeleteParam.id], function (err, vals) {
+                if (err) {
+                    console.log('reject', err);
+                    reject('Error: delete Note query failed');
+                    return;
+                }
+                console.log("VALS", vals);
+                resolve(vals);
+            });
+        });
     };
     return NotesService;
 }());

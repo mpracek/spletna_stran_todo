@@ -24,12 +24,13 @@ const db = new sqlite3.Database(bazaPodatkov, (err: { message: any; }) => {
             if (err) {
                 console.error(err.message)
                 // Table already created
-            }else{
+            }/*
+            else{
                 // Table just created, creating some rows
                 var insert = 'INSERT INTO notes (creation, note) VALUES (?,?)'
                 db.run(insert, ["2021-01-04","first_test"])
                 db.run(insert, ["2021-01-04","second_test"])
-            }
+            }*/
         });
     });
 
@@ -49,10 +50,10 @@ const SQL_UPDATE_DATA: string = `UPDATE notes SET (note,creation) = (?,?) WHERE 
 
 const SQL_DELETE_DATA: string = `DELETE FROM notes WHERE id =?`;
 
-const SQL_FIND_DATA: string = `SELECT FROM notes WHERE id =?`;
+const SQL_FIND_DATA: string = `SELECT * FROM notes WHERE id =?`;
 
-var SQL_COUNT_DATA: number = db.run(`SELECT MAX(id) FROM notes`) +1 ;
-console.log(SQL_COUNT_DATA);
+var SQL_COUNT_DATA: number = db.all(`SELECT MAX(id) FROM notes`) +1 ;
+console.log("stejemo ",SQL_COUNT_DATA);
 
 export {
   db, SQL_CREATE_NOTE_TABLE,SQL_INSERT_DATA,SQL_QUERY_NOTES,SQL_UPDATE_DATA,SQL_DELETE_DATA, SQL_COUNT_DATA, SQL_FIND_DATA

@@ -2,6 +2,10 @@ import { Body, Delete, Get, Patch, Path, Post, Query, Route, Tags, BodyProp, Con
 import { Notes } from "./note"
 import { NoteDeleteParam, NoteInsertParam, NoteQueryParam, NoteUpdateParam, NotesService} from "./notesService";
 
+//ko želiš vse zagnati, moraš še enkrat znova zagnati ukaz yarn run tsoa routes
+// in nato še yarn run tsc --outDir build --experimentalDecorators
+//ko zaženeš drugi klic, se ponovno zgenerirajo vse js datoteke, potrebne za delovanje (prek tsoa)
+
 var db = require("./database.js");
 
 
@@ -12,10 +16,10 @@ export class NotesController extends Controller {
     return new NotesService().getNotes();
   }
 
-  @Post("/{id}")
+  @Get("/{id}")
   public async findOneNote(
-    @Body() requestBody: NoteQueryParam): Promise<void> {
-      return new NotesService().findOneNote(requestBody);
+    id: number): Promise<Notes> {
+      return new NotesService().findOneNote(id);
     }
 
 

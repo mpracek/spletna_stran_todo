@@ -71,6 +71,23 @@ function RegisterRoutes(app) {
         promiseHandler(controller, promise, response, next);
     });
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    app.get('/api/note/:id', function (request, response, next) {
+        var args = {
+            id: { "in": "path", "name": "id", "required": true, "dataType": "double" },
+        };
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        var validatedArgs = [];
+        try {
+            validatedArgs = getValidatedArgs(args, request, response);
+        }
+        catch (err) {
+            return next(err);
+        }
+        var controller = new noteController_1.NotesController();
+        var promise = controller.findOneNote.apply(controller, validatedArgs);
+        promiseHandler(controller, promise, response, next);
+    });
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     app.post('/api/note', function (request, response, next) {
         var args = {
             requestBody: { "in": "body", "name": "requestBody", "required": true, "ref": "NoteInsertParam" },
