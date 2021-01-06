@@ -45,7 +45,7 @@ export class AppConfigService extends BaseService {
 
   public deleteNote(data): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.postAPI(this.envUrl + "delete", data).subscribe((response: any) => {
+      this.deleteAPI(this.envUrl + "delete", data).subscribe((response: any) => {
         console.log('izbrisana na server:::', response);
         resolve(response);
       });

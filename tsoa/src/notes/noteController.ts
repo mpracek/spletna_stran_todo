@@ -20,6 +20,7 @@ export class NotesController extends Controller {
       return new NotesService().findOneNote(id);
     }
 
+
   @Post("/")
   public async insertNote(
     @Body() requestBody: NoteInsertParam): Promise<Notes> {
@@ -35,9 +36,9 @@ export class NotesController extends Controller {
 
   @Delete("delete")
   public async deleteNote(
-    @Body() id:number
+    @Body() requestBody: NoteDeleteParam
   ): Promise<void> {
-    new NotesService().deleteNote(id);
+    new NotesService().deleteNote(requestBody);
   }
 
 }
