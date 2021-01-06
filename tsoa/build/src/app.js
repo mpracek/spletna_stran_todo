@@ -59,6 +59,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
+var runtime_1 = require("@tsoa/runtime");
 var express_1 = __importDefault(require("express"));
 var swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 var body_parser_1 = __importDefault(require("body-parser"));
@@ -82,3 +83,18 @@ exports.app.use("/docs", swagger_ui_express_1.default.serve, function (_req, res
     });
 }); });
 routes_1.RegisterRoutes(exports.app);
+exports.app.use(function errorHandler(err, req, res, next) {
+    if (err instanceof runtime_1.ValidateError) {
+        console.warn("Caught Validation Error for " + req.path + ":", err.fields);
+        return res.status(422).json({
+            message: "Validation Failed",
+            details: err === null || err === void 0 ? void 0 : err.fields,
+        });
+    }
+    if (err instanceof Error) {
+        return res.status(500).json({
+            message: "Internal Server Error",
+        });
+    }
+    next();
+});

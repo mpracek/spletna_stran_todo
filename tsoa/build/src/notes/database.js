@@ -4,7 +4,7 @@ V tej datoteki imamo konstante, ki nam bodo olajšale delo z SQL.
 konstante so nizi, ki vsebujejo SQL ukaze.
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SQL_FIND_DATA = exports.SQL_COUNT_DATA = exports.SQL_DELETE_DATA = exports.SQL_UPDATE_DATA = exports.SQL_QUERY_NOTES = exports.SQL_INSERT_DATA = exports.SQL_CREATE_NOTE_TABLE = exports.db = void 0;
+exports.SQL_FIND_DATA = exports.SQL_DELETE_DATA = exports.SQL_UPDATE_DATA = exports.SQL_QUERY_NOTES = exports.SQL_INSERT_DATA = exports.SQL_CREATE_NOTE_TABLE = exports.db = void 0;
 //Uvoz potrebnih knjižnjic
 //import { Database } from 'sqlite3';
 var sqlite3 = require('sqlite3').verbose();
@@ -45,6 +45,3 @@ var SQL_DELETE_DATA = "DELETE FROM notes WHERE id =?";
 exports.SQL_DELETE_DATA = SQL_DELETE_DATA;
 var SQL_FIND_DATA = "SELECT * FROM notes WHERE id =?";
 exports.SQL_FIND_DATA = SQL_FIND_DATA;
-var SQL_COUNT_DATA = db.all("SELECT MAX(id) FROM notes") + 1;
-exports.SQL_COUNT_DATA = SQL_COUNT_DATA;
-console.log("stejemo ", SQL_COUNT_DATA);

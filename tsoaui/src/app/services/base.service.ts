@@ -3,7 +3,6 @@ import { Injectable, EventEmitter, Output, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { ThrowStmt } from '@angular/compiler';
 
 
 @Injectable()
@@ -18,7 +17,7 @@ export class BaseService implements OnInit {
               .pipe(map((response: Response) => response),
                 catchError(this.handleError));
      }
-     //ta dovoli dodati novo
+     //ta dovoli dodati novo eno
      postAPI(url: string, data: Notes): Observable<any> {
           const headers = new Headers({'Content-Type' : 'application/json'});
           return this.http.post(url, {params: data})

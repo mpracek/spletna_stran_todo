@@ -90,13 +90,13 @@ var NotesService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        database_1.db.get(database_1.SQL_INSERT_DATA, [NoteInsertParam.creation, NoteInsertParam.note], function (err, vals) {
+                        database_1.db.all(database_1.SQL_INSERT_DATA, [NoteInsertParam.creation, NoteInsertParam.note], function (err, vals) {
                             if (err) {
                                 console.log('reject', err);
                                 reject('Error: insert Notes query failed');
                                 return;
                             }
-                            console.log("VALS", vals);
+                            console.log("VALS insert", vals);
                             //v konzoli izpiše eno po eno
                             resolve(vals);
                         });

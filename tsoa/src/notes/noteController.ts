@@ -6,9 +6,6 @@ import { NoteDeleteParam, NoteInsertParam, NoteQueryParam, NoteUpdateParam, Note
 // in nato še yarn run tsc --outDir build --experimentalDecorators
 //ko zaženeš drugi klic, se ponovno zgenerirajo vse js datoteke, potrebne za delovanje (prek tsoa)
 
-var db = require("./database.js");
-
-
 @Route("/api/note")
 export class NotesController extends Controller {
   @Get("list")
