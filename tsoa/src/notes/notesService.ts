@@ -29,8 +29,7 @@ public async getNotes(): Promise<Notes[]> {
           reject('Error: get Notes query failed');
           return;
         }
-        //console.log(vals);
-        //v konzoli res izpise vse
+        console.log(vals);
         resolve(vals);
       });
     }
@@ -45,8 +44,7 @@ public async getNotes(): Promise<Notes[]> {
         reject('Error: get Notes query failed');
         return;
       }
-      //console.log("VALS", vals);
-      //v konzoli izpiše eno po eno
+      console.log("VALS", vals);
       resolve(vals);
     });
     }
@@ -54,35 +52,35 @@ public async getNotes(): Promise<Notes[]> {
   }
 
   public async insertNote(NoteInsertParam:NoteInsertParam): Promise<Notes> {
-  return new Promise((resolve, reject) => {
-    db.all(SQL_INSERT_DATA,[NoteInsertParam.creation,NoteInsertParam.note], (err: any, vals: any) => {
-      if (err) {
-        console.log('reject', err);
-        reject('Error: insert Notes query failed');
-        return;
-      }
-      console.log("VALS insert", vals);
-      //v konzoli izpiše eno po eno
-      resolve(vals);
-    });
-  }
-  )
-  }
+    return new Promise((resolve, reject) => {
+      db.run(SQL_INSERT_DATA,[NoteInsertParam.creation,NoteInsertParam.note], (err: any, vals: any) => {
+        if (err) {
+          console.log('reject', err);
+          reject('Error: insert Notes query failed');
+          return;
+        }
+        console.log("VALS insert", vals);
+        //v konzoli izpiše eno po eno
+        resolve(vals);
+      });
+    }
+    )
+    }
 
-  public updateNote(NoteUpdateParam:NoteUpdateParam): Promise<Notes> {
-  return new Promise((resolve, reject) => {
-    db.get(SQL_UPDATE_DATA, [NoteUpdateParam.note,NoteUpdateParam.creation,NoteUpdateParam.id], (err: any, vals: any) => {
-      if (err) {
-        console.log('reject', err);
-        reject('Error: update Note query failed');
-        return;
+    public updateNote(NoteUpdateParam:NoteUpdateParam): Promise<Notes> {
+      return new Promise((resolve, reject) => {
+        db.run(SQL_UPDATE_DATA, [NoteUpdateParam.note,NoteUpdateParam.creation,NoteUpdateParam.id], (err: any, vals: any) => {
+          if (err) {
+            console.log('reject', err);
+            reject('Error: update Note query failed');
+            return;
+          }
+          console.log("VALS", vals);
+          resolve(vals);
+        });
       }
-      console.log("VALS", vals);
-      resolve(vals);
-    });
-  }
-  )
-  }
+      )
+      }
 
   public deleteNote(NoteDeleteParam:NoteDeleteParam): Promise<Notes> {
   return new Promise((resolve, reject) => {

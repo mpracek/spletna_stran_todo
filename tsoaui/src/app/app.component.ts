@@ -52,8 +52,8 @@ export class AppComponent implements OnInit {
   async getAllNotes() {
     this.configService.listAll().then(resp => {
       console.log(resp);
-      if (resp && resp.data) {
-        this.notes = resp.data;
+      if (resp) {
+        this.notes = resp;
       }
     })
   }

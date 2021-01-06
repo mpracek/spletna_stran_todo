@@ -19,11 +19,11 @@ export class BaseService implements OnInit {
      }
      //ta dovoli dodati novo eno
      postAPI(url: string, data: Notes): Observable<any> {
-          const headers = new Headers({'Content-Type' : 'application/json'});
-          return this.http.post(url, {params: data})
-          .pipe(map((response: Response) => response),
-            catchError(this.handleError));
-     }
+      const headers = new Headers({'Content-Type' : 'application/json'});
+     return this.http.post(url, data)
+      .pipe(map((response: Response) => response),
+        catchError(this.handleError));
+ }
      //ta dovoli popraviti eno
      patchAPI(url: string, data: Notes): Observable<any> {
       const headers = new Headers({'Content-Type' : 'application/json'});
