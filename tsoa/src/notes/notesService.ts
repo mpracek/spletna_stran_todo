@@ -53,7 +53,13 @@ public async getNotes(): Promise<Notes[]> {
 
   public async insertNote(NoteInsertParam:NoteInsertParam): Promise<Notes> {
     return new Promise((resolve, reject) => {
-      db.run(SQL_INSERT_DATA,[NoteInsertParam.creation,NoteInsertParam.note], (err: any, vals: any) => {
+    var today = NoteInsertParam.creation;
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var today2 = yyyy + '-' + mm + '-' + dd;
+    
+      db.run(SQL_INSERT_DATA,[today2,NoteInsertParam.note], (err: any, vals: any) => {
         if (err) {
           console.log('reject', err);
           reject('Error: insert Notes query failed');

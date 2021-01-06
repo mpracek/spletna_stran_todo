@@ -60,8 +60,7 @@ var NotesService = /** @class */ (function () {
                                 reject('Error: get Notes query failed');
                                 return;
                             }
-                            //console.log(vals);
-                            //v konzoli res izpise vse
+                            console.log(vals);
                             resolve(vals);
                         });
                     })];
@@ -78,8 +77,7 @@ var NotesService = /** @class */ (function () {
                                 reject('Error: get Notes query failed');
                                 return;
                             }
-                            //console.log("VALS", vals);
-                            //v konzoli izpiše eno po eno
+                            console.log("VALS", vals);
                             resolve(vals);
                         });
                     })];
@@ -90,7 +88,12 @@ var NotesService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        database_1.db.all(database_1.SQL_INSERT_DATA, [NoteInsertParam.creation, NoteInsertParam.note], function (err, vals) {
+                        var today = NoteInsertParam.creation;
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                        var yyyy = today.getFullYear();
+                        var today2 = yyyy + '-' + mm + '-' + dd;
+                        database_1.db.run(database_1.SQL_INSERT_DATA, [today2, NoteInsertParam.note], function (err, vals) {
                             if (err) {
                                 console.log('reject', err);
                                 reject('Error: insert Notes query failed');
@@ -106,7 +109,7 @@ var NotesService = /** @class */ (function () {
     };
     NotesService.prototype.updateNote = function (NoteUpdateParam) {
         return new Promise(function (resolve, reject) {
-            database_1.db.get(database_1.SQL_UPDATE_DATA, [NoteUpdateParam.note, NoteUpdateParam.creation, NoteUpdateParam.id], function (err, vals) {
+            database_1.db.run(database_1.SQL_UPDATE_DATA, [NoteUpdateParam.note, NoteUpdateParam.creation, NoteUpdateParam.id], function (err, vals) {
                 if (err) {
                     console.log('reject', err);
                     reject('Error: update Note query failed');
@@ -119,7 +122,7 @@ var NotesService = /** @class */ (function () {
     };
     NotesService.prototype.deleteNote = function (NoteDeleteParam) {
         return new Promise(function (resolve, reject) {
-            database_1.db.get(database_1.SQL_DELETE_DATA, [NoteDeleteParam.id], function (err, vals) {
+            database_1.db.run(database_1.SQL_DELETE_DATA, [NoteDeleteParam.id], function (err, vals) {
                 if (err) {
                     console.log('reject', err);
                     reject('Error: delete Note query failed');
