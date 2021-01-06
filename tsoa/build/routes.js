@@ -38,16 +38,6 @@ var models = {
         "dataType": "refAlias",
         "type": { "ref": "Pick_Notes.id-or-creation-or-note_", "validators": {} },
     },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Notes.id_": {
-        "dataType": "refAlias",
-        "type": { "dataType": "nestedObjectLiteral", "nestedProperties": { "id": { "dataType": "double", "required": true } }, "validators": {} },
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "NoteDeleteParam": {
-        "dataType": "refAlias",
-        "type": { "ref": "Pick_Notes.id_", "validators": {} },
-    },
 };
 var validationService = new runtime_1.ValidationService(models);
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -124,7 +114,7 @@ function RegisterRoutes(app) {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     app.delete('/api/note/delete', function (request, response, next) {
         var args = {
-            requestBody: { "in": "body", "name": "requestBody", "required": true, "ref": "NoteDeleteParam" },
+            id: { "in": "body", "name": "id", "required": true, "dataType": "double" },
         };
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         var validatedArgs = [];

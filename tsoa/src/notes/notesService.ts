@@ -66,7 +66,6 @@ public async getNotes(): Promise<Notes[]> {
           return;
         }
         console.log("VALS insert", vals);
-        //v konzoli izpiše eno po eno
         resolve(vals);
       });
     }
@@ -74,8 +73,13 @@ public async getNotes(): Promise<Notes[]> {
     }
 
   public updateNote(NoteUpdateParam:NoteUpdateParam): Promise<Notes> {
-    return new Promise((resolve, reject) => {
-      db.run(SQL_UPDATE_DATA, [NoteUpdateParam.note,NoteUpdateParam.creation,NoteUpdateParam.id], (err: any, vals: any) => {
+    return new Promise((resolve, reject) => {     
+      var today = NoteUpdateParam.creation;
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      var UpdateDate = yyyy + '-' + mm + '-' + dd;
+      db.run(SQL_UPDATE_DATA,[NoteUpdateParam.note,UpdateDate,NoteUpdateParam.id], (err: any, vals: any) => {
         if (err) {
           console.log('reject', err);
           reject('Error: update Note query failed');
@@ -84,19 +88,17 @@ public async getNotes(): Promise<Notes[]> {
         console.log("VALS", vals);
         resolve(vals);
       });
-    }
-    )
-    }
+    })}
 
-  public deleteNote(NoteDeleteParam:NoteDeleteParam): Promise<Notes> {
+  public deleteNote(id:number): Promise<Notes> {
   return new Promise((resolve, reject) => {
-    db.run(SQL_DELETE_DATA, [NoteDeleteParam.id], (err: any, vals: any) => {
+    db.run(SQL_DELETE_DATA, [id], (err: any, vals: any) => {
       if (err) {
         console.log('reject', err);
         reject('Error: delete Note query failed');
         return;
       }
-      console.log("VALS", vals);
+      console.log("DeleteNote", vals);
       resolve(vals);
     });
   }

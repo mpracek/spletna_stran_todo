@@ -6,6 +6,7 @@ import { NoteDeleteParam, NoteInsertParam, NoteQueryParam, NoteUpdateParam, Note
 // in nato še yarn run tsc --outDir build --experimentalDecorators
 //ko zaženeš drugi klic, se ponovno zgenerirajo vse js datoteke, potrebne za delovanje (prek tsoa)
 
+
 @Route("/api/note")
 export class NotesController extends Controller {
   @Get("list")
@@ -18,7 +19,6 @@ export class NotesController extends Controller {
     id: number): Promise<Notes> {
       return new NotesService().findOneNote(id);
     }
-
 
   @Post("/")
   public async insertNote(
@@ -35,9 +35,9 @@ export class NotesController extends Controller {
 
   @Delete("delete")
   public async deleteNote(
-    @Body() requestBody: NoteDeleteParam
+    @Body() id:number
   ): Promise<void> {
-    new NotesService().deleteNote(requestBody);
+    new NotesService().deleteNote(id);
   }
 
 }

@@ -18,12 +18,12 @@ export class BaseService implements OnInit {
                 catchError(this.handleError));
      }
      //ta dovoli dodati novo eno
-     postAPI(url: string, data: Notes): Observable<any> {
-      const headers = new Headers({'Content-Type' : 'application/json'});
-     return this.http.post(url, data)
-      .pipe(map((response: Response) => response),
-        catchError(this.handleError));
- }
+      postAPI(url: string, data: Notes): Observable<any> {
+           const headers = new Headers({'Content-Type' : 'application/json'});
+          return this.http.post(url, data)
+           .pipe(map((response: Response) => response),
+             catchError(this.handleError));
+      }
      //ta dovoli popraviti eno
      patchAPI(url: string, data: Notes): Observable<any> {
       const headers = new Headers({'Content-Type' : 'application/json'});
@@ -42,9 +42,9 @@ export class BaseService implements OnInit {
       deleteAPI(url: string, data: any): Observable<any> {
         console.log(url);
         const headers = new Headers({'Content-Type' : 'application/json'});
-        return this.http.delete(url, {params: data})
-              .pipe(map((response: Response) => response),
-                  catchError(this.handleError));
+        return this.http.post(url, data)
+        .pipe(map((response: Response) => response),
+          catchError(this.handleError));
       }
         private handleError(error: Response) {
           console.log('ERROR::STATUS:::::' + error.status);
