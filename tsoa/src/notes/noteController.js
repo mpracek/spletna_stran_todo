@@ -98,10 +98,10 @@ var NotesController = /** @class */ (function (_super) {
             });
         });
     };
-    NotesController.prototype.deleteNote = function (requestBody) {
+    NotesController.prototype.deleteNote = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                new notesService_1.NotesService().deleteNote(requestBody);
+                new notesService_1.NotesService().deleteNote(id);
                 return [2 /*return*/];
             });
         });

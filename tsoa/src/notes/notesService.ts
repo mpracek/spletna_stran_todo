@@ -90,9 +90,9 @@ public async getNotes(): Promise<Notes[]> {
       });
     })}
 
-  public deleteNote(NoteDeleteParam:NoteDeleteParam): Promise<Notes> {
+  public deleteNote(id:number): Promise<Notes> {
   return new Promise((resolve, reject) => {
-    db.get(SQL_DELETE_DATA, NoteDeleteParam.id, (err: any, vals: any) => {
+    db.run(SQL_DELETE_DATA, id, (err: any, vals: any) => {
       if (err) {
         console.log('reject', err);
         reject('Error: delete Note query failed');

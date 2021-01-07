@@ -80,7 +80,12 @@ export class AppComponent implements OnInit {
 
   deleteNote(note) {
     console.log("DELETE", note.id);
-    this.configService.deleteNote({id: note.id});
+    this.configService.deleteNote({id:note.id}).then(resp => {
+      console.log(resp);
+      if (resp) {
+        this.notes = resp;
+      }
+    });
     this.getAllNotes();
     this.decline();
   }

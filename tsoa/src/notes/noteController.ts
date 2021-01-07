@@ -36,9 +36,9 @@ export class NotesController extends Controller {
 
   @Delete("delete")
   public async deleteNote(
-    @Body() requestBody: NoteDeleteParam
+    @Body() id:number
   ): Promise<void> {
-    new NotesService().deleteNote(requestBody);
+    new NotesService().deleteNote(id);
   }
 
 }

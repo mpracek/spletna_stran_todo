@@ -124,9 +124,9 @@ var NotesService = /** @class */ (function () {
             });
         });
     };
-    NotesService.prototype.deleteNote = function (NoteDeleteParam) {
+    NotesService.prototype.deleteNote = function (id) {
         return new Promise(function (resolve, reject) {
-            database_1.db.get(database_1.SQL_DELETE_DATA, NoteDeleteParam.id, function (err, vals) {
+            database_1.db.run(database_1.SQL_DELETE_DATA, id, function (err, vals) {
                 if (err) {
                     console.log('reject', err);
                     reject('Error: delete Note query failed');
